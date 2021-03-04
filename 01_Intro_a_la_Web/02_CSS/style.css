@@ -1,0 +1,83 @@
+/* También podemos importar fuentes de sitios como Google Fonts, etc, normalmente los imports van hasta arriba del CSS */
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+
+/* SINTÁXIS BÁSICA */
+/* selector {
+  propiedad: valor
+} */
+
+/* TEST DE CONEXIÓN HTML+CSS */
+/* Podemos probar que nuestra conexión haya funcionado aplicando un estilo a todo con el uso de un asterisco como selector */
+/* * {
+  background: red;
+} */
+
+/* ESTILOS POR ETIQUETA */
+/* Estos estilos se aplican a todas las etiquetas que encuentre */
+/* Aquí le va a aplicar estilos a todo el <body> */
+body {
+  background: rgb(247, 220, 223);
+  text-align: center;
+  font-family: 'DotGothic16', sans-serif;
+}
+/* Aquí le va a aplicar estilos a todas las etiquetas <h1> */
+h1 {
+  color: red;
+  font-style: italic;
+}
+/* Aquí le va a aplicar estilos a todas las etiquetas <p> */
+p {
+  color: blue;
+}
+
+/* ESTILOS POR CLASE */
+/* Las clases normalmente son estilos que se repiten */
+/* Aquí aplicamos estilos a todos los subtítulos con etiqueta <h2> */
+h2 {
+  font-size: 25px;
+}
+/* Aquí aplicamos estilos a las etiquetas con clase class="subtitulo-verde" */
+.subtitulo-verde {
+  color: green;
+}
+/* Aquí aplicamos estilos a las etiquetas con clase class="subtitulo-coral" */
+.subtitulo-coral {
+  color: coral;
+}
+
+/* ESTILOS POR ID */
+/* Los identificadores son elementos únicos, es decir, que no se repiten */
+/* Aquí aplicamos estilos a todas las imágenes con el selector de las etiquetas <img> */
+img {
+  border: 5px solid #5028c2;
+  box-shadow: 5px 5px 5px;
+  border-radius: 50%;
+}
+/* Aquí aplicamos estilos únicamente a la imagen id="foto-perfil" */
+#perrito {
+  width: 100px;
+}
+/* Aquí aplicamos estilos únicamente a la imagen id="pokebola" */
+#pokebola {
+  width: 200px;
+}
+
+/* ESTILOS CON PSEUDOCLASES */
+/* Lsa pseudoclases sirven para aplicar estilos dependiendo del estado de determinado elemento (si está activo, si está enfocado, si el mouse está encima, etc) */
+/* La sintáxis es: */
+/* selector:pseudoclase {
+  propiedad: valor
+} */
+/* Aquí aplicamos un estilo para que se haga más grande la imagen con id="perrito" sólo cuando pasamos el mouse encima (hover) */
+#perrito:hover {
+  transform: scale(2);
+}
+/* Aquí aplicamos un estilo para que gire 720 grados la imagen con id="pokebola" sólo cuando pasamos el mouse encima (hover) */
+#pokebola:hover {
+  transform: rotate(720deg);
+}
+/* Aquí le aplicamos a todas las etiquetas <img> un tiempo de 2 segundos entre cada transición para que luzca más natural la animación */
+img:hover {
+  transition: 2s;
+}
+/* Más información sobre CSS: https://www.w3schools.com/html/html_css.asp */
