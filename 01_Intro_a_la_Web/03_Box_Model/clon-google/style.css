@@ -1,0 +1,120 @@
+/* ESTILOS GENERALES */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* Remover subrayado por default a links */
+a {
+  text-decoration: none;
+  color: #222222;
+}
+
+/* HEADER */
+/* Barra superior (Gmail - Images - ... - Foto) */
+header nav {
+  padding-top: 20px;
+  float: right;
+}
+/* Estilos a todas las imágenes dentro de la barra del header (cuadros y foto de perfil) */
+header nav img {
+  width: 40px;
+  vertical-align: middle;
+}
+/* Separación entre todos los links dentro de la barra del header */
+header nav a {
+  padding: 0 5px;
+}
+/* Redondeado foto de perfil */
+.foto-perfil {
+  border-radius: 20px;
+}
+
+/* SECCIÓN GOOGLE */
+/* Estilos generales */
+.google {
+  text-align: center;
+  padding-top: 10vw;
+}
+/* Logo Google */
+.google img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  padding: 1rem;
+}
+/* Barra de búsqueda dentro de la sección Google */
+.google input {
+  width: 45%;
+  padding: 12px;
+  border-radius: 20px;
+  border: 1px solid #cccccc;
+  font-size: 15px;
+  /* CÓMO AGREGO EL MICRÓFONO? */
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Google_mic.svg/712px-Google_mic.svg.png');
+  background-size: 15px;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-origin: content-box;
+}
+/* Efecto para cuando el puntero está en la barra de búsqueda */
+.google input:focus {
+  outline: none;
+  box-shadow: 0.5px 0.5px 1px;
+}
+/* Efecto para cuando el mouse pasa encima de la barra de búsqueda */
+.google input:hover {
+  box-shadow: 0.5px 0.5px 2px;
+}
+/* Estos estilos aplican a toda la caja que contiene los botones de búsqueda */
+.botones {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+/* Estos estilos aplican individualmente a cada uno de los botones dentro de la caja */
+.botones button {
+  padding: 12px 15px;
+  margin: 0 5px;
+  border: 1px solid #efefef;
+  border-radius: 6px;
+  font-size: 16px;
+}
+/* Efecto mouse encima de los botones */
+.botones button:hover {
+  border: 1px solid grey;
+  box-shadow: 0.5px 0.5px 1px;
+}
+/* Color palabra Español (Latinoamérica) */
+.espanol {
+  color: blue;
+}
+
+/* FOOTER */
+/* Estilos generales */
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #e6e6e6;
+  height: 110px;
+}
+/* Líneas horizontales del footer */
+footer hr {
+  margin-top: 0;
+}
+/* Espacio entre los links del footer */
+footer a {
+  padding: 13px;
+}
+/* Detalles de los links del footer */
+.mexico {
+  padding-top: 10px;
+  margin-bottom: 20px;
+}
+.pie-izquierdo {
+  float: left;
+}
+.pie-derecho {
+  float: right;
+}
