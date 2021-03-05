@@ -1,45 +1,77 @@
+/* ESTILOS GENERALES */
 html {
   font-family:sans-serif;
   font-size:16px;
+  background: #fff8cb;
 }
 
-.img-fluid{
-  border-radius: .5rem .5rem 0 0;
-  max-width:100%;
-}
-
-
-.title {
+/* BOX MODEL */
+/* Ejemplo caja de amazon 📦:
+Producto: content
+Caja (carton): border
+Espacio/espuma entre producto y cartón: padding
+Espacio externo entre cajas: margin */
+.box {
   border-radius:1rem; /* rem es una medida relativa que corresponde al tamaño del elemento raíz del temaño de la fuente del documento */
-  width:45vw; /* vw = viewport width 1vw = 1/100 del ancho de la pantalla */
+  width:50vw; /* vw = viewport width 1vw = 1/100 del ancho de la pantalla */
   /* Elementos del box model  */
   border: 1px solid black;
   margin:1rem;
   padding:1rem;
 }
 
+/* EJEMPLO POKÉMON CARDS */
+.title {
+  font-style: italic;
+  color: red;
+  text-shadow: 2px 2px 2px #000;
+}
+
 .card{
-  width:28vw;
-  height:50vw;
+  width:18rem;
+  height:30rem;
   background:gray;
-  border:1px solid #efefef;
+  border:0.5rem solid #efefef;
   float:left;
   /* display:block; */
   /* display:inline-block; */
-  margin:.2rem;
+  margin:1rem;
   padding:1rem;
-  border-radius:.5rem;
+  border-radius:0.5rem;
 }
 
-.card-title{
-  color:#fff;
+.img-fluid{
+  border-radius: 0.5rem 0.5rem 0 0;
+  max-width:100%;
 }
 
 .card-body{
   color:#fff;
+  text-align: justify;
+}
+
+.card-title{
+  font-style: italic;
+  text-shadow: 1px 1px 1px #000;
+}
+
+.card-footer{
+  font-size: .9rem;
+  color: brown;
 }
 
 #lucario{
   background:#5C96E1;
-  border:.5rem solid #EDD05A;
+  border-color: #EDD05A;
+}
+
+/* JUGANDO CON PSEUDOCLASES */
+.card:hover{
+  transform: translate(1vw) scale(1.2);
+  transition: 1s;
+}
+
+.card:not(:hover){
+  transition: 1s;
+  opacity: .6;
 }
