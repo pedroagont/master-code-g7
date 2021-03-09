@@ -1,0 +1,67 @@
+/* ESTILOS GENERALES DE LA BANDERA */
+/* Le damos forma a la bandera */
+.bandera {
+  border: 1px solid black;
+  height: 70vh;
+  width: 70vw;
+  background: navy;
+
+  /* Después de que todas nuestras cajas tienen forma, vamos aplicando propiedades de flexbox */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* CAJAS BLANCAS */
+/* Le damos forma a las cajas blancas (dentro de la bandera) */
+.blanco {
+  /* border: 1px solid black; */
+  height: 30vh;
+  width: 20vw;
+  background: white;
+}
+
+/* CAJAS ROJAS */
+/* Le damos forma a las cajas rojas (dentro de las cajas blancas) */
+.rojo {
+  /* border: 1px solid black; */
+  height: 90%;
+  width: 90%;
+  background: red;
+}
+
+/* SEPARAMOS LAS CAJAS BLANCAS DE ARRIBA Y DE ABAJO */
+.arriba, .abajo {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* AJUSTAMOS LA DISTRBUCIÓN FLEX DE LAS CAJAS ROJAS DE ACUERDO A SU POSICIÓN  */
+/* Las de arriba de la derecha se van al final en horizontal */
+.arriba .derecha{
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Las de abajo de la derecha se van al final en HORIZONTAL y al final en VERTICAL */
+.abajo .derecha {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+/* Las de abajo de la izquierda se van al final en VERTICAL */
+.abajo .izquierda {
+  display: flex;
+  align-items: flex-end;
+}
+
+/* Ajustamos el width de las cajas blancas de lado derecho */
+.blanco.derecha {
+  width: 60%;
+}
+
+/* Ajustamos el width de las cajas rojas de lado derecho */
+.blanco.derecha .rojo {
+  width: 95%;
+}
