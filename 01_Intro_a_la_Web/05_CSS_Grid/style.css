@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    color:#3c3c3c;
+}
+
+.general_cont {
+    width: 100vw;
+    height: 100vh;
+    background: #e7e7e7;
+    display: grid;
+    /*  columnas de plantilla grid cada valor es una columna (ancho)   */
+    grid-template-columns: 20% 1fr 30% .5rem;
+    /*  filas de plantilla grid cada valor es una fila (alto)  */
+    /*    grid-template-rows: 20% 20% 20% 20% 20%;*/
+    grid-template-rows: 8% repeat(4, 1fr);
+    grid-gap: .5rem;
+}
+
+.header {
+    background: #3b5998;
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+
+.menu_left {
+    grid-row-start: 2;
+    grid-row-end: 6;
+    /*    border:1px solid white;*/
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile {
+    margin: 1rem 0 3rem 0;
+    padding: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.directory_item {
+    flex: 2;
+    padding: .5rem;
+}
+
+.directory_item.first {
+    flex: 1
+}
+
+.profile_pic {
+    background: navy;
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 50%;
+
+}
+
+
+.menu_right_bottom {}
+
+.top_content{
+    border-radius: .5rem;
+    background: white;
+    grid-area: 2 / 2 / 3 / 3; /*esto es equivalente */
+/*
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 6;
+*/
+}
+
+.central_content {
+    border-radius: .5rem;
+    background: white;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 6;
+}
+
+
+.menu_right_top {
+    border-radius: .5rem;
+    background:white; 
+    grid-row-start: 2;
+    grid-column-start: 3;
+    grid-row-end: 4;
+    grid-column-end: 4;
+/*    son equivalentes 👇👆🏽 */
+/*    grid-area: 2 / 3 / 4 / 4; */
+    
+}
+
+.menu_right_bottom{
+    background:white;
+    border-radius: .5rem;
+    grid-area: 4 / 3 / 6 / 4; 
+}
