@@ -1,0 +1,66 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.general {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 20% 50% 30%;
+  grid-template-rows: 8% repeat(5, 1fr);
+  grid-gap: .75rem;
+}
+
+.header {
+  border: 2px solid black;
+  border-radius: 10px;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.navmenu {
+  border: 2px solid black;
+  border-radius: 10px;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 5;
+}
+
+.tweet {
+  border: 2px solid black;
+  border-radius: 10px;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.feed {
+  border: 2px solid black;
+  border-radius: 10px;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 7;
+}
+
+.news {
+  border: 2px solid black;
+  border-radius: 10px;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 4;
+}
+
+.follow {
+  border: 2px solid black;
+  border-radius: 10px;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 4;
+  grid-row-end: 6;
+}
