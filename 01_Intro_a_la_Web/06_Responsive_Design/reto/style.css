@@ -56,7 +56,7 @@ header nav a:first-child {
   font-style: normal;
   font-weight: 400;
   font-size: 25px;
-  color: #FFFFFF;
+  color: white;
   border: 1px solid navy;
   box-sizing: border-box;
   border-radius: 10px;
@@ -117,30 +117,30 @@ header nav a:first-child {
   margin-bottom: 80px;
   background-color: transparent;
   border: none;
-  border-bottom: 4px solid #000000;
+  border-bottom: 4px solid black;
   font-size: 28px;
   padding-bottom: 30px;
   padding-left: 30px;
   font-family: 'Open Sans', sans-serif;
-  color: #000000;
+  color: black;
   font-weight: bold;
 }
 
 #formulario form input::placeholder, #formulario form textarea::placeholder {
-  color: #000000;
+  color: black;
   font-weight: bold;
 }
 
 #formulario form button {
   width: 302px;
-  background-color: #1A264E;
-  border: 1px solid #1A264E;
+  background-color: navy;
+  border: 1px solid navy;
   box-sizing: border-box;
   border-radius: 10px;
   font-style: normal;
   font-weight: 400;
   font-size: 33px;
-  color: #FFFFFF;
+  color: white;
   align-self: center;
   padding: 25px 10px;
 }
