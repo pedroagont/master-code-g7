@@ -1,0 +1,27 @@
+body{
+    margin:0; 
+    padding:0; 
+    font-family: sans-serif;
+}
+
+.title{
+    margin:1rem;
+}
+
+.content{
+    width:100vw; 
+    min-height:90vh;
+    display: grid; 
+    grid-template-columns: repeat(4,1fr); 
+    grid-template-rows: repeat(6,1fr); 
+}
+
+.main_form{
+    grid-area: 1 / 1 / 6 / 6; 
+    background:#efefef;
+    padding:1rem;
+}
+
+.etiqueta{
+    grid-column-end: span 2; 
+}

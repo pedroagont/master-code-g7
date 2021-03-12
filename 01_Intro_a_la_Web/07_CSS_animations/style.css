@@ -1,0 +1,106 @@
+body{
+    font-family: sans-serif;
+    margin:0; 
+    padding:0;
+}
+
+.title{
+    padding:1rem;
+}
+
+.main{
+    display:grid; 
+    width:100vw; 
+    height:90vh; 
+    background:gray;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(5,1fr);
+}
+
+.block{
+    display:flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+.circle-item{
+    width:100px; 
+    height:100px; 
+    background:navy;
+    border-radius: 50%;
+    transition: all 1.5s; 
+}
+
+.circle-item.hover-state:hover,
+.circle-item.hover-state:focus,
+.circle-item.hover-state:active {
+    background:aliceblue;
+    
+}
+
+.circle-item.time_descr:hover{
+    background:orange;
+    width:150px; 
+    height:150px; 
+    transition: all 1.5s; 
+/*    equivalencia de la propiedad transition (shorthand) */
+/*
+    transition-property: width; 
+    transition-delay: 1s; 
+    transition-timing-function:ease 
+*/
+}
+
+.ease_ease{
+    transition-timing-function:ease; 
+}
+
+.ease_ease-in{
+    transition-timing-function: ease-in; 
+}
+
+.ease_ease-out{
+    transition-timing-function: ease-out; 
+}
+
+.ease-custom{
+    transition-timing-function: cubic-bezier(.03,.81,.94,.31)
+}
+
+
+.keyframed{
+    position: relative;
+    animation: circle-square 5s infinite;
+    animation-fill-mode: backwards;
+/*
+    equivalente del shorthand en propiedades
+    animation-name: circle-square; 
+    animation-duration: 5s; 
+*/
+    
+}
+
+.keyframed:active,keyframed:focus{
+    animation: none;
+    
+}
+
+@keyframes circle-square{
+    0%{
+        border-radius: 0; 
+        top:0; 
+        filter:blur(0);
+    }
+    50%{
+        border-radius:50%;
+        top:100px;
+        filter:blur(5px);
+    }
+    100%{
+         border-radius: 0; 
+        top:0; 
+        filter:blur(0);
+        
+    }
+/*    también se puede user "from" y "to" en lugar de 0% y 100%*/
+}
