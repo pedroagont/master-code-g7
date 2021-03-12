@@ -1,0 +1,86 @@
+/* ESTILOS GENERALES */
+body {
+  background: navy;
+  font-family: sans-serif;
+  color: white;
+}
+
+.top-nav a {
+  padding: 1rem 0.5rem;
+  color: yellow;
+}
+
+.menu {
+  display: none;
+}
+
+.contenedor {
+  margin: 1rem;
+}
+
+.caja {
+  border: 2px solid white;
+  background: lightcoral;
+  width: 25%;
+  margin: 0.25rem;
+  float: left;
+}
+
+/* MEDIA QUERIES */
+/* Esta funcionalidad nos permite adaptar la presentación del contenido dependiendo las características del dispositivo desde el que se muestre */
+/* Sintáxis básica:
+@media media_type and (condición) {
+  selector {
+    propiedad: valor;
+  }
+} */
+
+/* Aplicamos estilos cuando las pantallas tengan un ancho desde 320px hasta 768px */
+@media screen and (min-width:320px) and (max-width: 768px) {
+
+  body {
+    background: orange;
+    font-family: monospace;
+    color: black;
+    font-size: 1.5rem;
+  }
+
+  .top-nav {
+    display: none;
+  }
+
+  .menu {
+    display: block;
+    text-align: center;
+  }
+
+  .caja {
+    border: 2px solid black;
+    background: lightgreen;
+    width: 100%;
+    float: left;
+  }
+
+}
+
+/* MOBILE FIRST */
+/* Diseño pensado que nuestros usuarios estarán principalmente en móvil
+Las condiciones indican los MÍNIMOS NECESARIOS para determinados estilos
+      @media screen and (min-width: 320px) {}
+      @media screen and (min-width: 480px) {}
+      @media screen and (min-width: 768px) {}
+      @media screen and (min-width: 1024px) {}
+
+      MIN-WIDTH SIGNIFICA DESDE
+*/
+
+/* DESKTOP FIRST */
+/* Diseño pensado que nuestros usuarios estarán principalmente en escritorio
+Las condiciones indican los MÁXIMOS SOPORTADOS para determinados estilos
+      @media screen and (max-width: 1024px) {}
+      @media screen and (max-width: 768px) {}
+      @media screen and (max-width: 480px) {}
+      @media screen and (max-width: 320px) {}
+
+      MAX-WIDTH SIGNIFICA HASTA
+*/
