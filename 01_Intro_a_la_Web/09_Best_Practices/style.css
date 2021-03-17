@@ -1,0 +1,12 @@
+/* Si se requiere importar alguna hoja de estilo adicional, se sugiere que sea hasta arriba/parte superior, previo a la carga del resto del CSS */
+@import url('https://fonts.googleapis.com/css2?family=Chango&display=swap');
+
+h1 {
+  font-family: 'Chango', cursive;
+}
+
+.parrafo-rojo {
+  color: white;
+  font-size:20px;
+  background: red
+}
