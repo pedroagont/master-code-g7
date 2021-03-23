@@ -10,7 +10,15 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
 <body>
-  <h1>Bootstrap GRID 🏗</h1>
+  <h1 class="text-center m-4">Bootstrap GRID 🏗</h1>
+
+  <!-- Sistema de diseño de Bootstrap basado en 12 columnas
+  col -> col con tamaño automatico/default
+  col-sm -> sm de small - En pantallas pequeñas (>=576px) mide XX columnas
+  col-md -> md de medium - En pantallas mediana (>=768px) mide XX columnas
+  col-lg -> lg de large - En pantallas grande (>=992px) mide XX columnas
+  col-xl -> xl de extralarge - En pantallas extragrande (>=1200px) mide XX columnas
+  col-xxl -> xxl de extraextralarge - En pantallas extraextragrande (>=1400px) mide XX columnas -->
 
   <!-- Estructura básica obtenida de la documentación de Bootstrap GRID: https://getbootstrap.com/docs/5.0/layout/grid/ -->
   <section class="container">
@@ -70,14 +78,6 @@
     </div>
   </section>
 
-  <!-- Sistema GRID de Bootstrap está basado en 12 columnas
-  col-XX -> col con tamaño automatico/default
-  col-sm-XX -> sm de small - En pantallas pequeñas (>=576px) mide XX columnas
-  col-md-XX -> md de medium - En pantallas mediana (>=768px) mide XX columnas
-  col-lg-XX -> lg de large - En pantallas grande (>=992px) mide XX columnas
-  col-xl-XX -> xl de extralarge - En pantallas extragrande (>=1200px) mide XX columnas
-  col-xxl-XX -> xxl de extraextralarge - En pantallas extraextragrande (>=1400px) mide XX columnas -->
-
   <!-- ATAJO EMMET: section.container.my-4>div.row>div.col-sm-XX.col-md-XX.bg-primary*3 TAB -->
   <section class="container my-4">
     <div class="row">
@@ -106,9 +106,9 @@
           <div class="col-1 bg-info">11</div>
           <div class="col-1 bg-light">12</div>
 
-          <div class="col-12 col-sm-12 col-md-6 bg-primary">Un texto</div>
-          <div class="col-8 col-sm-8 col-md-2 bg-success">Otro texto</div>
-          <div class="col-6 col-sm-6 col-md-4 bg-warning">Más texto</div>
+          <div class="col-12 col-sm-12 col-md-3 bg-primary">Un texto</div>
+          <div class="col-3 col-sm-3 col-md-3 bg-success">Otro texto</div>
+          <div class="col-9 col-sm-9 col-md-6 bg-warning">Más texto</div>
         </div>
       </div>
 
@@ -128,9 +128,9 @@
           <div class="col-1 bg-info">11</div>
           <div class="col-1 bg-light">12</div>
 
-          <div class="col-12 col-sm-12 col-md-6 bg-primary">Un texto</div>
-          <div class="col-8 col-sm-8 col-md-2 bg-success">Otro texto</div>
-          <div class="col-6 col-sm-6 col-md-4 bg-warning">Más texto</div>
+          <div class="col-12 col-sm-12 col-md-4 bg-primary">Un texto</div>
+          <div class="col-4 col-sm-4 col-md-6 bg-success">Otro texto</div>
+          <div class="col-8 col-sm-8 col-md-2 bg-warning">Más texto</div>
         </div>
       </div>
     </div>
