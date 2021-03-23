@@ -1,0 +1,30 @@
+/* PODEMOS REASIGNAR PROPIEDADES DE CLASES DE BOOTSTRAP CON NUESTROS PROPIOS ESTILOS */
+.bg-primary {
+  background-color: #5811de !important;
+}
+/* OJO: Usar la bandera !important no es considerada una buena práctica
+Sin embargo resulta una forma práctica y rápida para sobreescribir propiedades */
+
+.btn-primary {
+  background-color: #5811de;
+  border: 1px solid #5811de;
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+  background-color: #3c099e;
+  border: 1px solid #3c099e;
+}
+
+.card {
+  border-radius: 30px;
+  box-shadow: 1px 1px 0.5px;
+}
+
+.card:hover, .card:active, .card:focus  {
+  transform: scale(1.05);
+}
+
+.card img {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
