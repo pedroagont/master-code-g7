@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!-- 1. Siempre declarar el DOCTYPE -->
+<html lang="es">
+<!-- 2. Verificar que el lenguaje coincida con el contenido de mi página -->
+
+<head>
+  <!-- 3. Title explícito con respecto al contenido, *sirve para optimizar SEO: Search Engine Optimization -->
+  <title>Mejores prácticas HTML + CSS 💻✅</title>
+
+  <!-- 4. Usar las etiquetas descriptivas o meta tags, esto nutre de más información nuestra página/sitio/app -->
+  <meta charset="UTF-8">
+  <meta name="description" content="Una clase para aprender mejores prácticas">
+  <meta name="keywords" content="mejores prácticas, HTML, CSS, best practices">
+  <meta name="author" content="Pedro González, Luis Casillas">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Open Graph tags para mostrar contenido y páginas específicamente a través de redes sociales -->
+  <meta property="og:title" content="Mejores prácticas HTML + CSS 💻✅" />
+  <meta property="og:description" content="Aprendiendo mejores prácticas en HTML y CSS" />
+  <meta property="og:image" content="https://st.depositphotos.com/1625616/1842/i/600/depositphotos_18422741-stock-photo-isolated-puppy-above-banner.jpg" />
+
+  <!-- 8. Colocar las hojas de estilo en la parte superior, dentro de la etiqueta <head>, de preferencia después de las meta tags (por orden de carga) -->
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+  <!-- Podemos tener más de una hoja de estilo en la misma página/sitio/app -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <!-- Considerar el formato y la consistencia de nuestro código para distintos navegadores, una sugerencia muy utilizada por estándar en la industria es con el uso de normalize, (homologa estilos en distintos navegadores) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+  <!-- En caso de agregar una hoja de estilos propia, se sugiere que sea después del css de Bootstrap o cualquier otra librería similar para que fácilmente podamos reescribir propiedades si así fuese necesario -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- 5. Usar estructuras de HTML semántico, esto sirve para mejorar la interpretación de nuestro código en navegadores y por temas de accesibilidad para el usuario
+  - Ejemplos: header, main, footer, h1, h2, div, button, nav, aside, article, form, fieldset, etc
+  - No abusar de las etiquetas, sobre todo de los encabezados h1, h2, etc para fines de precisión en motores de búsqueda
+  - No usar divs para todo, procurar usar etiquetas adecuadas para el fin deseado: h1, h2, strong, b, i, em, ol para listas con orden, ul para listas sin orden, etc
+  - Verificar que abran y cierren adecuadamente nuestras etiquetas (a excepción de las que no llevan cierre como link, img, input), para esto podemos apoyarnos de la identación
+  - Acostumbrarse a usar minúsculas de preferencia
+  - Comentar y documentar adecuadamente el código, sin excederse
+  - EXTRA: Usar atributos ARIA cuando podamos para hacer nuestra página más accesible para personas con debilidades visuales o auditivas -->
+
+  <header>
+    <h1>Mejores prácticas de HTML y CSS 💻✅</h1>
+    <nav>
+      <ul>
+        <li><i class="fas fa-home"></i><a href="#"> Inicio</a></li>
+        <li><i class="fas fa-address-card"></i><a href="#"> Nosotros</a></li>
+        <li><i class="fas fa-envelope"></i><a href="#"> Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Esto es un subtítulo increíble</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+    <!-- 6. Describir las imágenes en su atributo alt de manera adecuada y precisa de acuerdo a lo que muestran para mejorar su interpretación en navegador y por accesibilidad -->
+    <img src="https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2019/12/tips-para-donas-caseras.jpg" alt="donas con azúcar">
+    <img src="https://i.ytimg.com/vi/-sYGpHcbwSQ/hqdefault.jpg" alt="bebé comiendo limón por primera vez">
+
+    <!-- 7. Separar el contenido/estructura de la presentación/estilos, es decir separar HTML de CSS -->
+    <!-- Esto es una mala práctica porque tiene el estilo directamente en la etiqueta del HTML -->
+    <p style="color: white; font-size:20px; background: red">Esto es un párrafo con estilos inline directos en el HTML o <i>inline styling</i></p>
+    <!-- Esto es una mejor práctica, separar los estilos por clases/ids en su propia hoja de estilo -->
+    <p class="parrafo-rojo">Este otro párrafo tiene estilos separados por clase en su propia hoja de estilos CSS</p>
+
+    <!-- 9. Utilizar adecuadamente las etiquetas de los forms y agregar sus atributos action (url) y method (get/post) -->
+    <form action="" method="">
+      <!-- Aunque no es obligatorio, podemos usar la etiqueta fieldset para abrazar los inputs -->
+      <fieldset>
+        <legend>Datos personales</legend>
+
+        <!-- Las etiquetas label acompañadas de su input, en donde sus atributos for y name coincidan respectivamente -->
+        <label for="nombre">Nombre</label> <!-- Su atributo for dice nombre, significa que hará referencia al input con este name -->
+        <input type="text" name="nombre"> <!-- Su atributo name dice nombre, significa que así se llama el dato de este input -->
+
+        <label for="correo">Correo</label>
+        <input type="email" name="correo" placeholder="juan@perez.com"> <!-- Usar los atributos que aporten valor a nuestro sitio y al usuario (ejemplo placeholder, value, etc) -->
+
+        <label for="esta-vivo">Está vivo?</label>
+        <input type="checkbox" name="esta-vivo" id="esta-vivo"> <!-- También podemos ligar un label con un input haciendo uso del atributo id, en este ejemplo, esto hace que el label también active el checkbox -->
+
+        <label for="tiene-hambre">Tiene hambre</label>
+        <input type="checkbox" name="tiene-hambre" id="esta-vivo"> <!-- Si colocamos un id con valor diferente al del label como en este ejemplo esta-vivo es diferente tiene-hambre, así que aunque lo presionamos no activará el checkbox -->
+
+        <!-- Se sugiere ser suficientemente explícito con los nombres de los inputs para que los parámetros se entiendan por sí solos una vez enviados a través del form con el botón de submit -->
+        <button type="submit">Enviar</button>
+      </fieldset>
+    </form>
+
+  </main>
+
+  <footer>
+    <div>
+      <h4>Contacto</h4>
+      <nav>
+        <ol>
+          <li>9988458554</li>
+          <li>pgonzalez@post.com</li>
+          <li>pedroagont.com</li>
+        </ol>
+      </nav>
+      <a href="#">Esto es un link!</a>
+    </div>
+  </footer>
+
+  <!-- 10. Al agregar código en Javascript, se sugiere que sea hasta el final, antes de que cierre la etiqueta <body> -->
+  <!-- Se puede agregar javascript de manera directa en el HTML: -->
+  <script>
+    console.log('HolaMundo directamente desde el HTML! 👋')
+  </script>
+  <!-- También se puede agregar javascript desde otro archivo o ruta, ya sea que el script esté de manera local o sea remota a través de una cdn -->
+  <script src="script.js" charset="utf-8"></script>
+
+</body>
+</html>
