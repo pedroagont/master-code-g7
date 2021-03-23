@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Formularios 📑</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Formularios 📑</h1>
+
+  <!-- LOS FORMS NOS PERMITEN RECUPERAR DATOS DE ENTRADA DE NUESTROS USUARIOS -->
+  <!-- Se declaran con la etiqueta <form> y por lo general incluyen 2 atributos:
+  - action: indica la URL a dónde se dirige la data, puede ser un archivo php local, el endpoint de una API, etc
+  - method: el método por el cuál viajará la data, puede ser GET para traerla o POST para enviarla -->
+  <form action="#" method="#">
+
+    <!-- ELEMENTOS BÁSICOS -->
+    <!-- Las etiquetas label e input deben de concidir en sus atributos for y name respectivamente, esto mejora la accesibilidad del formulario -->
+    <label for="first_name">Nombre</label>
+    <input name="first_name" type="text" placeholder="Juan" required>
+
+    <!-- Podemos usar una etiqueta <br> para crear un "break" o un salto de línea -->
+    <br>
+
+    <!-- Hay diferentes tipos de input: text, number, email, password, date, etc -->
+    <!-- Lo que sea que ingresemos al input se registrará como el value del input -->
+    <label for="last_name">Apellidos</label>
+    <input name="last_name" type="text" placeholder="Pérez">
+    <br>
+
+    <label for="age">Edad</label>
+    <input name="age" min=0 max=99 type="number" placeholder="27">
+    <br>
+
+    <!-- Podemos agregar un atributo placeholder para agregar una sugerencia de la respuesta esperada-->
+    <label for="email">Correo</label>
+    <input name="email" type="email" placeholder="tucorreo@correo.com">
+    <br>
+
+    <label for="comments">Comentarios</label>
+    <textarea cols="30" rows="3" name="comments" type="text"></textarea>
+    <br>
+
+    <label for="date">Fecha (no funciona en safari desktop)</label>
+    <input name="date" type="date">
+    <br>
+
+    <!-- LISTAS CON OPCIONES -->
+    <!-- Se declara con la etiqueta <select> y también debe coincidir en la atributo for y name con su label
+    - El atributo value incluye el valor oficial que arrojará esa opción en caso de ser seleccionada
+    - El atributo disabled nos permite deshabilitar la opción para que no se pueda seleccionar
+    - El atributo selected nos permite dejar una opción seleccionada por default
+    - Al agregar los atributos disabled o selected, su valor se considera true o verdadero -->
+    <label for="country">País</label>
+    <select name="country">
+      <option value="" disabled selected>Seleccione un país</option>
+      <option value="co">Colombia</option>
+      <option value="mx">México</option>
+      <option value="cr">Costa Rica</option>
+      <option value="gu">Guatemala</option>
+      <option value="vz">Venezuela</option>
+    </select>
+    <br>
+
+    <!-- FIELDSETS -->
+    <!-- La etiqueta <fieldset> sirve para incluir semánticamente un conjunto de campos para rellenar
+    Puede incluir la etiqueta <legend> para agregar un encabezado en el fieldset -->
+    <fieldset>
+      <legend>Años de experiencia</legend>
+
+      <!-- INPUT RADIO -->
+      <!-- Botones de tipo radio o botones de opción múltiple
+      - Debe incluir su respectivo value en caso de ser seleccionado
+      - Si el atributo for de la etiqueta label y el atributo id de la etiqueta input coinciden, podemos seleccionar la opción con sólo presionar el label
+      - Como esta opción está condicionada, cuando un valor sea selccionado se indicará como el value del input experience-->
+      <label for="0_5years">0 a 5 años</label>
+      <input name="experience" value="0_5years" id="0_5years" type="radio">
+
+      <label for="5_10years">5 a 10 años</label>
+      <input name="experience" value="5_10years" id="0_5years" type="radio">
+
+      <label for="10plus">10 o más</label>
+      <input name="experience" value="10plus" id="0_5years" type="radio">
+    </fieldset>
+    <br>
+
+    <fieldset>
+      <legend>Lenguajes de programación</legend>
+
+      <!-- INPUT CHECKBOX -->
+      <!-- Input para marcar distintas opciones que apliquen al mismo tiempo
+      Al igual que los radio buttons, si el atributo for de la etiqueta label y el atributo id de la etiqueta input coinciden, podemos marcar el checkbox con sólo presionar el label
+      -->
+      <label for="javascript">Javascript</label>
+      <input name="javascript" id="javascript" type="checkbox">
+
+      <label for="hypertexthtml">HTML</label>
+      <input name="hypertexthtml" id="hypertexthtml" type="checkbox">
+
+      <label for="cascadestylesheet">CSS</label>
+      <input name="cascadestylesheet" id="cascadestylesheet" type="checkbox">
+    </fieldset>
+    <br>
+
+    <!-- SUBMIT FORM -->
+    <!-- Define el botón que "activará" o que enviará la data ingresada del formulario al destino indicado en el atributo action de la etiqueta form
+    - Se puede declarar con la etiqueta input o con la etiqueta button
+    - Siempre va al final del form ya que es el elemento que registra a todos los inputs que lo anteceden -->
+    <button type="submit">Enviar formulario!</button>
+  </form>
+
+  <!-- RESULTADO: URL QUERY STRINGS -->
+  <!-- Esto es un ejemplo de cómo se ve la URL después de llenar el form y hacer click en SUBMIT:
+  URL/?first_name=Pedrito&last_name=Gonzalez&age=27&email=cancun%40devf.mx&comments=Wujuu&date=2021-03-25&country=mx&experience=5_10years&javascript=on&hypertexthtml=on
+  - Esta URL incluye todos los datos ingresados separados por un ampersand (&)
+  - A cada uno de estos elementos se les llama query strings (first_name, last_name, etc)
+  - Esta URL con los query strings podría ser procesada por un servidor ya sea para traer datos existentes (GET) o enviar datos nuevos (POST) -->
+
+  <!-- Más info sobre HTML Forms: https://www.w3schools.com/html/html_forms.asp -->
+</body>
+</html>

@@ -1,0 +1,196 @@
+/* ------------------------- ESTILOS GENERALES */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.title {
+  padding: 0 1rem;
+}
+
+/* ------------------------- ESTILAMOS UNA CAJA BÁSICA */
+.box-item {
+  border: 1px solid black;
+  width: 100px;
+  height: 100px;
+  background: orange;
+  margin: 2rem;
+  /* Por lo regular cuando trabajamos con transiciones/animaciones, queremos que la posición del elemento sea relativa */
+  position: relative;
+
+  /* Una vez definida los cambios con el hover, vamos agregando poco a poco propiedades transition para ver cómo se muestra la transición */
+  /* transition-property: width;
+  transition-duration: 3s;
+  transition-timing-function: linear;
+  transition-delay: 1s; */
+
+  /* Equivalencia de la propiedad transition (shorthand) */
+  /* transition: width 3s linear 1s; */
+
+  /* También podemos poner cómo transicionar distintas propiedades separadas por comas */
+  /* transition: width 3s linear 1s, background .5s ease; */
+
+  /* Podemos aplicar a todas las propiedades el mismo tipo de transicion con all */
+  transition: all 3s;
+}
+
+/* ------------------------- TRANSICIONES CON HOVER */
+/* Agregamos la pseudoclase hover a los elementos hover-state para provocar la transición (active y focus son para que sirva en móvil) */
+.hover-state:hover, .hover-state:active, .hover-state:focus {
+  background: orange;
+  width: 400px;
+}
+
+/* TIPOS DE TRANSICIONES */
+.hover-state.linear {
+  transition-timing-function: linear;
+}
+
+.hover-state.ease {
+  transition-timing-function: ease;
+}
+
+.hover-state.ease-in {
+  transition-timing-function: ease-in;
+}
+
+.hover-state.ease-out {
+  transition-timing-function: ease-out;
+}
+
+.hover-state.ease-in-out {
+  transition-timing-function: ease-in-out;
+}
+
+.hover-state.ease-custom {
+  transition-timing-function: cubic-bezier(0, .71, .52, -0.63)
+}
+
+/* ------------------------- ANIMACIONES CON KEYFRAMES */
+/* Sintáxis básica:
+@keyframes nombre-de-animacion {
+  Aquí irían los nuevos valores de las propiedades para crear la animación
+  Pueden ser desde y hasta (from, to) para ir de un 0 a un 100% directo
+  O puede ser por porcentajes para ir haciendo cambios graduales
+} */
+
+/* FROM TO KEYFRAMES */
+@keyframes from-to-keyframes {
+  from {
+    background: red;
+    left: 0px;
+  }
+
+  to {
+    background: yellow;
+    left: 200px;
+  }
+}
+/* Aplicamos la animación creada fromto-keyframes al elemento con la clase animation-from-to */
+.animation-from-to {
+  /* animation-name: fromto-keyframes;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate; */
+  /* Equivalencia de la propiedad animation (shorthand) */
+  animation: from-to-keyframes 3s linear infinite alternate;
+}
+
+/* PERCENT KEYFRAMES */
+@keyframes percent-keyframes {
+  0% {
+    background-color: red;
+    left: 0px;
+    top: 0px;
+  }
+
+  25% {
+    background-color: yellow;
+    left: 200px;
+    top: 0px;
+  }
+
+  50% {
+    background-color: blue;
+    left: 200px;
+    top: 200px;
+  }
+
+  75% {
+    background-color: green;
+    left: 0px;
+    top: 200px;
+  }
+
+  100% {
+    background-color: red;
+    left: 0px;
+    top: 0px;
+  }
+}
+/* Aplicamos la animación creada percent-keyframes al elemento con la clase animation-percent */
+.animation-percent {
+  animation: percent-keyframes 3s infinite alternate;
+}
+
+/* TIPOS DE ANIMACIONES */
+/* Este ejemplo sirve para comparar la diferencia entre las transiciones y las animaciones */
+@keyframes horizontal-move {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: 300px;
+  }
+}
+
+.keyframed {
+  animation: horizontal-move 3s infinite alternate;
+}
+
+.keyframed.linear {
+  animation-timing-function: linear;
+}
+
+.keyframed.ease {
+  animation-timing-function: ease;
+}
+
+.keyframed.ease-in {
+  animation-timing-function: ease-in;
+}
+
+.keyframed.ease-out {
+  animation-timing-function: ease-out;
+}
+
+.keyframed.ease-in-out {
+  animation-timing-function: ease-in-out;
+}
+
+.keyframed.ease-custom {
+  animation-timing-function: cubic-bezier(0, .71, .52, -0.63)
+}
+
+/* ------------------------- BONUS MANITA SALUDANDO */
+@keyframes swinging {
+  from {
+    transform: rotate(60deg);
+  }
+
+  to {
+    transform: rotate(-10deg);
+  }
+}
+
+.swinging-hand {
+  display: inline-block;
+  animation: swinging 1s infinite alternate;
+}
+
+/* Más información sobre transiciones y animaciones en CSS:
+https://www.w3schools.com/css/css3_transitions.asp
+https://www.w3schools.com/css/css3_animations.asp */
