@@ -1,0 +1,71 @@
+body {
+    
+    font-family: 'Inter', sans-serif;
+    background-image: linear-gradient(180deg, #eee, #fff 100px, #fff);
+}
+
+.navbar_links .link_navbar{
+    color:#455a74;
+}
+
+.container {
+    max-width: 960px;
+}
+
+.pricing-header {
+    max-width: 700px;
+}
+
+.super_bold {
+    font-weight: 900;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Roboto', sans-serif;
+}
+
+/*custom classes*/
+
+.abs_cont{
+    position: relative;
+}
+
+.abs_dead_center{
+    position: absolute; 
+    left:15%; 
+    right:15%; 
+    bottom:auto; 
+    top:7%;
+    width:70%;
+}
+
+.background_subtle{
+    background-color:#e7f1fb
+}
+
+.blue_square{
+    width:7px; 
+    height:7px;
+    margin:.5px;
+    background:#1673ff;
+    display: inline-block;
+}
+/*Volanta o paratexto*/
+.upper_title{ 
+    font-size: .6rem;
+    text-transform: uppercase;
+    font-weight: 600; 
+    letter-spacing: .1em;
+    line-height: 2;
+}
+
+.main_title{
+    font-size: 4.5rem;
+    line-height: 1.05;
+    
+}
