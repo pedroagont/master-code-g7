@@ -2,9 +2,9 @@ console.log('Hola desde script.js! 👋');
 
 // ESTRUCTURA BÁSICA IF-ELSE
 // if ( condicion ) {
-//   paso 1, lo que procede si la condición SÍ se cumple, o si arroja un true
+//   paso 1, lo que procede si la condición se cumple o arroja un true/verdadera
 // } else {
-//   paso 2, lo que procede si la condición NO se cumple, o si arroja un false
+//   paso 2, lo que procede si la condición NO se cumple o arroja un false/falso
 // }
 
 // OPERADORES RELACIONALES
@@ -15,7 +15,8 @@ console.log('Hola desde script.js! 👋');
 // mayor igual que: >=
 // comparar igualdad: ==
 // comparar igualdad y tipo de dato: ===
-// diferente de: !==
+// diferente de: !=
+// diferente de o tipo de dato: !==
 
 // Ejemplo:
 let edad = 18;
@@ -25,6 +26,7 @@ if (edad >= 18) {
 } else {
   console.log('Es MENOR de edad 👼🏻');
 }
+
 
 // ESTRUCTURA DE IF ANIDADOS
 // if ( condicion1 ) {
@@ -47,6 +49,7 @@ if (dia == 'nublado') {
 } else {
   console.log('Vas tarde a correr ⏰');
 }
+
 
 // OPERADORES LÓGICOS
 // Son los símbolos que nos permiten agregar lógica a nuestras condicionales
@@ -81,42 +84,44 @@ if (comida == 'manzana' || comida == 'pera' || comida == 'naranja' || comida == 
 }
 
 // EJEMPLO CON NOT (!)
+// Sirve para validar lo contrario a un valor booleano definido (verdadero si está en falso, o falso si está en verdadero)
 let estaVivo = false;
 
-if (!estaVivo) {
+if (!estaVivo) { // Esto es como decir "si estaVivo no es true, entonces..."
   console.log('Está MUERTO 💀');
 } else {
   console.log('Está VIVO 🥳');
 }
 
-// DIFERENCIAS ENTRE OPERADORES RELACIONES
+
+// VALIDACIÓN DE OPERADORES RELACIONES
 console.log(5 > 10); // false
 console.log('hola' == 'hola'); // true
 console.log(5 != 10); // true
 console.log(10 != 10); // false
 
 // Comparación básica de valor con ==
-console.log(100 == '100'); // true
+console.log(100 == '100'); // true // Esto marca true porque javascript identidica que el número 100 y la cadena "100" tienen "el mismo valor" aunque sepamos que es diferente tipo de dato
 
 // Comparación estricta de valor y tipo de dato con ===
-console.log(100 === '100'); // false
+console.log(100 === '100'); // false // Esto marca false porque el número 100 y la cadena "100" son diferentes tipos de dato
 console.log(100 === 100); // true
 
 
 // OPERADORES TERNARIOS
-// Es otra sintáxis para declarar condicionales
-// condicion ? lo que pasa si la condición es true : lo que pasa si la condición es false
+// Es otra forma de escribir condicionales if-else usando la sig sintaxis:
+// condición ? true : false;
 
-// Ejemplo forma básica if-else
-let edadIFELSE = 27;
+// Con forma básica if-else
+let edadIfElse = 27;
 
-if (edadIFELSE >= 18) {
+if (edadIfElse >= 18) {
   console.log('Es MAYOR de edad 👴🏻');
 } else {
   console.log('Es MENOR de edad 👼🏻');
 }
 
-// Ejemplo forma operador ternario
+// Con forma operador ternario
 let edadTernario = 12;
 
 edadTernario >= 18
