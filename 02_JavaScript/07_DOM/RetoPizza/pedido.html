@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Reto Pizza 🍕</title>
+  <!-- CSS only -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+
+  <h1 class="text-center m-5">Pedido Pizza 🍕</h1>
+
+  <!-- CARD/REPUESTAS -->
+  <div class="container my-5">
+    <div class="card w-75 mx-auto" id="card">
+      <img id="imagen" src="https://www.menuspararestaurantes.com/wp-content/uploads/2015/10/mesero-altamente-efectivo.jpg" class="card-img-top" alt="mesera">
+      <div class="card-body">
+        <h5 class="card-title" id="pedido">Pedido</h5>
+        <p class="card-text" id="respuestaNombre">Nombre</p>
+        <p class="card-text" id="respuestaDireccion">Direccion</p>
+        <p class="card-text" id="respuestaTelefono">Teléfono</p>
+        <p class="card-text font-weight-bold">Su orden está en proceso</p>
+        <div class="progress">
+          <div id="progress" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center" id="spinner">
+    <img class="w-25 h-25" src="https://media3.giphy.com/media/3o7bu8sRnYpTOG1p8k/source.gif" alt="">
+  </div>
+
+  <script src="pedido.js" charset="utf-8"></script>
+
+  <!-- JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+</body>
+</html>
