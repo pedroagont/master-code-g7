@@ -18,7 +18,7 @@ console.log(pila.pop()); // Nos regresa el elemento que sale = 'Historias de Cro
 console.log(pila.pop()); // 'Rayuela'
 console.log(pila.pop()); // 'El Principito'
 
-// IMPLEMENTACIÓN DE UNA PILA
+// IMPLEMENTACIÓN DE UNA PILA USANDO CLASES
 class Stack {
   constructor(){
     this.collection = [];
@@ -72,6 +72,7 @@ console.log(pilaAlumnos);
 // Viendo el tamaño de nuestra pila con LENGTH()
 console.log(pilaAlumnos.length());
 console.log(pilaAlumnos.pop());
+console.log(pilaAlumnos.length());
 console.log(pilaAlumnos);
 
 // Viendo el último elemento de nuestra pila con PEEK()
@@ -80,7 +81,7 @@ console.log(pilaAlumnos.push('Dan Orduña'));
 console.log(pilaAlumnos.peek());
 
 // Verificando si nuestra pila está vacía con ISEMPTY()
-console.log(pilaAlumnos.isEmpty());
+console.log(pilaAlumnos.isEmpty()); // false porque hasta este punto aún hay 2 elementos en la pila
 console.log(pilaAlumnos.pop());
 console.log(pilaAlumnos.pop());
-console.log(pilaAlumnos.isEmpty());
+console.log(pilaAlumnos.isEmpty()); // true porque en las dos líneas anteriores quitamos los 2 elementos que había en nuestra pila, por lo que ahora está vacía
