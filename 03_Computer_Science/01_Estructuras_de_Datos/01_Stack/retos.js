@@ -10,7 +10,7 @@ console.log('Hola desde retos! 👋');
 ////    RECIBIR PARÁMETROS pila (Stack), numero (number)
 ////
 ////    SI pila.tamaño es diferente de numero, entonces:
-////        pila.pop()
+////        SACAMOS EL ÚLTIMO ELEMENTO pila.pop()
 ////        MiFuncionPilas(pila, numero)
 ////    SI NO, entonces:
 ////        ESCRIBIR/RETORNAR pila con tamaño indicado por el numero recibido
@@ -21,7 +21,7 @@ console.log('Hola desde retos! 👋');
 const miFuncionPilasArreglo = (pila, numero) => {
   if(pila.length !== numero){
     pila.pop();
-    miFuncionPilasArreglo(pila, numero);
+    return miFuncionPilasArreglo(pila, numero);
   }
   return pila;
 }
@@ -31,48 +31,11 @@ console.log('Iniciando función con arreglo como pila');
 console.log(miFuncionPilasArreglo(pilaFrutasArreglo, 4));
 console.log('Terminó función');
 
-// FUNCIÓN CON OBJETO STACK (PILA) COMO PARÁMETRO
-class Stack {
-  constructor(){
-    this.collection = [];
-    this.counter = 0;
-    this.limit = 10;
-  }
-
-  push(nuevoElemento){
-    if(this.counter === this.limit) throw new Error('Stack overflow');
-    this.collection.push(nuevoElemento);
-    this.counter++;
-    return this.counter;
-  }
-
-  pop(){
-    const elementoDesapilado = this.collection.pop();
-    this.counter--;
-    return elementoDesapilado;
-  }
-
-  length(){
-    return this.counter;
-  }
-
-  peek(){
-    if(this.length() === 0) return null
-    return this.collection[this.counter-1]
-  }
-
-  isEmpty(){
-    if(this.length() === 0) return true
-    return false
-  }
-
-}
-
 // FUNCIÓN CON OBJETO CLASE STACK COMO PARÁMETRO
 const miFuncionPilasObjetoStack = (pila, numero) => {
   if(pila.length() !== numero){
     pila.pop();
-    miFuncionPilasObjetoStack(pila, numero);
+    return miFuncionPilasObjetoStack(pila, numero);
   }
   return pila;
 }
@@ -83,10 +46,7 @@ console.log(pilaClaseStack);
 // pilaClaseStack.push('Manzana')
 // pilaClaseStack.push('Cebolla')
 // pilaClaseStack.push('Apio')
-// pilaClaseStack.push('Naranja')
-// pilaClaseStack.push('Papaya')
-// pilaClaseStack.push('Sandía')
-// pilaClaseStack.push('Melón')
+// ...
 
 const pilaFrutasArregloStack = ['Manzana','Cebolla','Apio','Naranja','Papaya','Sandía','Melón'];
 for (let i = 0; i < pilaFrutasArregloStack.length; i++) {
