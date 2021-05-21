@@ -83,21 +83,27 @@ console.log('Último en espera: ', colaAlumnos.back());
 
 
 // EJEMPLO BANCO
+
+// Creamos una nueva filaBanco a partir de la clase Cola o Queue
 const filaBanco = new Queue();
 
+// Encolamos los elementos a la fila
 filaBanco.enqueue('Alejandra Torres');
 filaBanco.enqueue('Abby Litman');
 filaBanco.enqueue('Miguel Leal');
 filaBanco.enqueue('JC de la Peña');
 
-// Intervalo para atender a los clientes del banco
+// Función para atender a los clientes del banco
+const atenderClientes = (fila) => {
+    if(!fila.isEmpty()){
+      console.log('Atendiendo a', fila.dequeue());
+      console.log('Quedan por atender:', fila.length());
+      console.log('Siguiente en la fila: ', fila.front());
+    } else { // Cuando la cola está vacía
+      console.log('Fila vacía, pase por su turno');
+      clearInterval(funcionIntervalo); // Incluimos clearInterval y le pasamos el intervalo que queremos detener
+    }
+}
 
-setInterval(()=> {
-  if(!filaBanco.isEmpty()){
-    console.log('Atendiendo a', filaBanco.dequeue());
-    console.log('Quedan por atender:', filaBanco.length());
-    console.log('Siguiente en la fila: ', filaBanco.front());
-  } else {
-    console.log('Fila vacía, pase por su turno');
-  }
-}, 3000);
+// Ejecutamos una función intervalo para automatizar los mensajes
+const funcionIntervalo = setInterval(() => atenderClientes(filaBanco), 3000)
