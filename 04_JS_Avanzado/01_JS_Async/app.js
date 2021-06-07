@@ -102,3 +102,31 @@ saludarUsuario('Bruno', callbackDespedida);
 
 saludarUsuario('July', callbackBienvenida);
 saludarUsuario('July', callbackDespedida);
+
+// EJEMPLO:
+// Crear una función de orden superior que reciba como
+// argumentos dos números y un callback. Según el callback
+// que se pase a la función, se devuelve la suma de los
+// dos números, la resta de los dos números, la
+// multiplicación de los dos números, o la división de estos.
+
+//1. Creamos la función de orden superior que recibe dos números y un callback:
+const resultado = (num1, num2, operacion) => {
+  //Validamos que el tercer argumento "operacion" sea una función (recordando que un callback es una función como argumento dentro de otra función):
+  if (typeof operacion !== 'function') return console.log('Debes pasar una función como argumento');
+  //Regresamos con el resultado de ejecutar el callback "operación" con los num1 y num2 como parámetros
+  return operacion(num1, num2);
+}
+
+//2. Creamos las funciones que pasaremos como callback (sumar, restar, multiplicar y dividir)
+//Como sólo requerimos retornar el resultado de la operación, podemos hacer uso de funciones flecha y de esa forma declararlas en una sóla línea
+const sumar = (num1, num2) => num1 + num2;
+const restar = (num1, num2) => num1 - num2;
+const multiplicar = (num1, num2) => num1 * num2;
+const dividir = (num1, num2) => num1 / num2;
+
+// 3. Probamos enviando a consola la ejecución de la función resultado con diferentes operaciones (funciones callback):
+console.log(resultado(5, 7, sumar)); // 12
+console.log(resultado(5, 7, restar)); // -2
+console.log(resultado(5, 7, multiplicar)); // 35
+console.log(resultado(5, 7, dividir)); // 0.7142
