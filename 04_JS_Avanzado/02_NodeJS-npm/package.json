@@ -1,0 +1,18 @@
+{
+  "name": "02_nodejs-npm",
+  "version": "1.0.0",
+  "description": "Introducción a NodeJS y NPM",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "introduccion",
+    "nodejs",
+    "javascript",
+    "npm"
+  ],
+  "author": "Pedro A. González",
+  "license": "ISC"
+}

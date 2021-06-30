@@ -1,0 +1,19 @@
+{
+  "name": "02_nodejs-npm-request",
+  "version": "1.0.0",
+  "description": "Introducción a peticiones con request",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "peticiones",
+    "request"
+  ],
+  "author": "Pedro A. González",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.88.2"
+  }
+}
