@@ -1,0 +1,20 @@
+{
+  "name": "04_crud",
+  "version": "1.0.0",
+  "description": "Creando un CRUD con request",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "crud",
+    "request"
+  ],
+  "author": "Pedro A. González",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.88.2"
+  }
+}
