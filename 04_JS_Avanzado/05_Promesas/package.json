@@ -1,0 +1,21 @@
+{
+  "name": "05_promesas",
+  "version": "1.0.0",
+  "description": "Intro a promesas",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "introduccion",
+    "promesas",
+    "js"
+  ],
+  "author": "Pedro A. González",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.88.2"
+  }
+}
