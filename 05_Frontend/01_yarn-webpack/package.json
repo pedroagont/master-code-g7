@@ -1,0 +1,26 @@
+{
+  "name": "01_yarn-webpack",
+  "version": "1.0.0",
+  "description": "Intro a yarn y webpack",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "build": "webpack"
+  },
+  "author": "Pedro A. González",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.6",
+    "css-minimizer-webpack-plugin": "^3.0.2",
+    "html-loader": "^2.1.2",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.1.0",
+    "style-loader": "^3.0.0",
+    "webpack": "^5.42.1",
+    "webpack-cli": "^4.7.2"
+  }
+}
