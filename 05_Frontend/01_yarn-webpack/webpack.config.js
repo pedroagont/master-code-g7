@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 // CONFIG DEFAULT
 // module.exports = {
@@ -40,12 +41,12 @@ module.exports = {
     ],
   },
   plugins: [
-    // PARA CREAR UN HTML A PARTIR DE NUESTRO CÓDIGO
+    // PARA CREAR UN HTML QUE YA CARGUE NUESTRO JS A PARTIR DE NUESTRO CÓDIGO
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       filename: "./index.html",
     }),
-    // PARA EXTRAER EL CSS DE NUESTRO CÓDIGO
+    // PARA EXTRAER EL CSS DE NUESTRO CÓDIGO JS EN UN ARCHIVO APARTE
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css",
@@ -53,8 +54,9 @@ module.exports = {
   ],
   // PARA MINIMIZAR EL CSS
   optimization: {
-  minimizer: [
-    new CssMinimizerPlugin(),
-  ],
-},
+    minimizer: [
+      new CssMinimizerPlugin(), // PARA REMOVER COMENTARIOS Y MINIFICAR EL CSS FINAL
+      new TerserPlugin(), // PARA REMOVER COMENTARIOS Y MINIFICAR EL JS FINAL
+    ],
+  },
 };
