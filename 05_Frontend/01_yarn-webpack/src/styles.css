@@ -1,0 +1,17 @@
+body {
+  background: coral;
+  font-family: sans-serif;
+}
+
+img {
+  width: 25em;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 4px 4px 4px white;
+  transition: all 10ms;
+}
+
+img:hover {
+  transform: translateY(5px);
+  box-shadow: 1px 1px 4px white;
+}
