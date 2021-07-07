@@ -1,5 +1,20 @@
+/* ESTILOS
+Podemos agregar estilos como normalmente lo hacemos desde un archivo CSS
+En vez de importar este archivo en nuestro HTML, se importa en el componente JS que lo use, en este caso App.js y así se interpreta adecuadamente
+Para que se mande a producción adecuadamente (cuando hacemos yarn build) requerimos los loaders y plugins necesarios para que webpack pueda empaquetar correctamente nuestra app */
+
 body {
   background: coral;
   color: white;
   font-family: sans-serif;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.texto-amarillo {
+  color: yellow;
+}
+
+.sombra {
+  text-shadow: 2px 2px 2px black;
 }
