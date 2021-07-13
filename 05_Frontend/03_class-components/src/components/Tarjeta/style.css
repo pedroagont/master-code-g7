@@ -1,0 +1,7 @@
+.tarjeta-orden {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 1em;
+  margin: 1em;
+  width: 250px;
+}
