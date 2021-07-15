@@ -1,0 +1,16 @@
+.card-personaje {
+  background: green;
+  border: 3px solid black;
+  border-radius: 20px;
+  color: white;
+  padding: .5em;
+  max-width: 350px;
+}
+
+.card-personaje h4 {
+  font-size: 24px;
+}
+
+.card-personaje p {
+  font-size: 18px;
+}
