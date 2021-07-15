@@ -1,7 +1,7 @@
 import React from 'react';
 
 class Personaje extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       nombre: props.name,
@@ -14,10 +14,10 @@ class Personaje extends React.Component {
   render() {
     return (
       <div className="card-personaje">
-        <img src={ this.state.imagen } alt={ this.state.nombre } />
-        <h4>Nombre: { this.state.nombre }</h4>
-        <p>Especie: { this.state.especie }</p>
-        <p>Origen: { this.state.origen }</p>
+        <img className="card-imagen" src={ this.state.imagen } alt={ this.state.nombre } />
+        <h4 className="card-titulo">Nombre: { this.state.nombre }</h4>
+        <p className="card-texto">Especie: { this.state.especie }</p>
+        <p className="card-texto">Origen: { this.state.origen }</p>
       </div>
     );
   }
