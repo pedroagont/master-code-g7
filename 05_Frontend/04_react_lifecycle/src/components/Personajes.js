@@ -26,10 +26,10 @@ class Personajes extends React.Component {
   renderizarPersonajes() {
     const { personajes } = this.state;
     if (personajes.length === 0) {
-      return <span>Cargando personajes...</span>
+      return <h2>Cargando personajes...</h2>
     } else if (personajes.length > 0){
       return <>
-              <h4> Se encontraron { personajes.length } personajes </h4>
+              <h2> Se encontraron { personajes.length } personajes </h2>
               <div className="">
                 {
                   personajes.map(personaje => {
