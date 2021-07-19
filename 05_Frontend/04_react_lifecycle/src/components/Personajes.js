@@ -15,20 +15,39 @@ class Personajes extends React.Component {
 
     axios.get(URL_API_RICKMORTY)
       .then(response => {
-        // handle success
-        this.setState({personajes: response.data.results});
+        const personajes = response.data.results
+        this.setState({ personajes });
       })
       .catch(error => {
-        // handle error
         console.log(error);
       })
   }
 
+  renderizarPersonajes() {
+    const { personajes } = this.state;
+    if (personajes.length === 0) {
+      return <span>Cargando personajes...</span>
+    } else if (personajes.length > 0){
+      return <>
+              <h4> Se encontraron { personajes.length } personajes </h4>
+              <div className="">
+                {
+                  personajes.map(personaje => {
+                    return <Card key={ personaje.id } name={personaje.name} species={personaje.species} origin={personaje.origin.name} image={personaje.image}/>
+                  })
+                }
+              </div>
+            </>
+    }
+  }
+
   render() {
     return(
-      this.state.personajes.map(personaje => {
-        return <Card key={ personaje.id } name={personaje.name} species={personaje.species} origin={personaje.origin.name} image={personaje.image}/>
-      })
+      <>
+      {
+        this.renderizarPersonajes()
+      }
+      </>
     );
   }
 }
