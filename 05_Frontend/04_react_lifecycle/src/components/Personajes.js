@@ -15,7 +15,6 @@ class Personajes extends React.Component {
 
     axios.get(URL_API_RICKMORTY)
       .then(response => {
-        console.log(response);
         const personajes = response.data.results
         this.setState({ personajes });
       })
