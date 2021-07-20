@@ -27,14 +27,6 @@
 
 .card-imagen {
   border: 5px solid white;
-  border-radius: 20px;
-}
-
-.display-flex {
-  display: flex;
-  justify-content: space-around;
-}
-
-.row {
-  max-width: 95vw;
+  border-radius: 50%;
+  width: 75%;
 }
