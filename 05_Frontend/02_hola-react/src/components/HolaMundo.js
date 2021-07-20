@@ -8,5 +8,5 @@ function HolaMundo() {
   );
 }
 
-// Para permitir que otros componetes tengan acceso a esta pieza de código, necesitamos pedirle a JS que lo exporte
+// Para permitir que otros componentes tengan acceso a esta pieza de código, necesitamos pedirle a JS que lo exporte
 export default HolaMundo;
