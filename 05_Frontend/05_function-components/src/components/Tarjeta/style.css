@@ -1,0 +1,15 @@
+.tarjeta-usuario {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 1em;
+  margin: 1em;
+  width: 250px;
+  background: coral;
+  color: white;
+  box-shadow: 1px 1px 1px black;
+}
+
+.tarjeta-usuario:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 4px grey;
+}
