@@ -1,0 +1,44 @@
+.card-noticia {
+  background: midnightblue;
+  color: white;
+  width: 600px;
+  border: 5px solid black;
+  border-radius: 20px;
+  padding: 0.8em;
+  margin: 0.5em;
+  display: inline-block;
+}
+
+.card-imagen {
+  max-width: 600px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.card-titulo {
+  color: gold;
+  font-size: 24px;
+  text-shadow: 2px 2px 1px black;
+}
+
+.card-descripcion {
+  font-style: italic;
+}
+
+.card-url {
+  color: goldenrod;
+  display: block;
+  margin-bottom: 0.8em;
+}
+
+.card-boton {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  text-shadow: 2px 2px 1px black;
+}
+
+.card-boton:active {
+  transform: translateY(1px);
+  text-shadow: 1px 1px 1px black;
+}
