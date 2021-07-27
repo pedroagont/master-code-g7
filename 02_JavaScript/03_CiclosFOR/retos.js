@@ -14,6 +14,32 @@ console.log('Hola desde retos! 👋');
 // 3. Mediante un ciclo FOR y conficional IF, muestra sólo los elementos impares
 // 4. Mediante únicamente un ciclo FOR, muestra los elementos que sean pares
 
+let platillos = ['Enchiladas', 'Taco', 'Tamal', 'Pozole', 'Barbacoa', 'Guacamole'];
+
+console.log('Ejercicio 1');
+for (let i = 0; i < platillos.length; i++) {
+  console.log(platillos[i]);
+}
+
+console.log('Ejercicio 2');
+for (let i = 0; i < platillos.length; i++) {
+  if (platillos[i] == 'Pozole' || platillos[i] == 'Barbacoa') {
+    console.log(platillos[i]);
+  }
+}
+
+console.log('Ejercicio 3');
+for (let i = 0; i < platillos.length; i++) {
+  if (i % 2 === 1) {
+    console.log(i + ' ' + platillos[i]);
+  }
+}
+
+console.log('Ejercicio 4');
+for (let i = 0; i < platillos.length; i += 2) {
+  console.log(i + ' ' + platillos[i]);
+}
+
 
 //RETO 2 FIZZBUZZ
 // Mostrar en consola los números del 1 al 100
@@ -33,3 +59,15 @@ console.log('Hola desde retos! 👋');
 // 15 fizz
 // 15 buzz
 // 15 fizzbuzz
+
+for (let i = 1; i <= 100; i++) {
+  if (i % 3 === 0 && i % 5 === 0) {
+    console.log(i + ' FizzBuzz');
+  } else if (i % 3 === 0) {
+    console.log(i + ' Fizz');
+  } else if (i % 5 === 0) {
+    console.log(i + ' Buzz');
+  } else {
+    console.log(i);
+  }
+}
