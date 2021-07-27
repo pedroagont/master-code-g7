@@ -9,9 +9,11 @@ const password = 'passw0rd123!';
 const promptPassword = prompt('Ingresa tu contraseña para para ingresar al sistema');
 
 if (promptPassword === password) {
-  console.log('Bienvenido');
+  alert('Bienvenido');
+  console.log('El usuario ingresó correctamente su password');
 } else {
-  console.log('Password incorrecto, intente de nuevo');
+  alert('Password incorrecto, intente de nuevo');
+  console.log('El usuario ingresó un password incorrecto');
 }
 
 // ------- RETO 2
@@ -20,17 +22,17 @@ if (promptPassword === password) {
 // Utilizar símbolo de modulo/residuo -> % <-
 
 const numeroUsuario = parseInt(prompt('Ingresa un valor número y te diré si es PAR o IMPAR!'));
-const residuo = numeroUsuario % 2
+const residuo = numeroUsuario % 2;
 
 if (residuo === 0) {
   alert('Tu número ' + numeroUsuario + ' es un número PAR.');
   console.log('El usuario ingresó el número ' + numeroUsuario + ' y es un número PAR.');
 } else if (residuo === 1) {
-  alert('Tu número ' + numeroUsuario + ' es un número PAR.');
+  alert('Tu número ' + numeroUsuario + ' es un número IMPAR.');
   console.log('El usuario ingresó el número ' + numeroUsuario + ' y es un número IMPAR.');
 } else {
   alert('Datos incorrectos, favor de ingresar números enteros');
-  console.log('Datos incorrectos, favor de ingresar números enteros');
+  console.log('El usuario ingresó valores incorrectos');
 }
 
 // ------- RETO 3
@@ -57,10 +59,40 @@ if (jugador1 === jugador2 && jugador1 !== '' && jugador2 !== '') {
 }
 
 
-
 // ------- RETO 4
 // Crea una aplicación web con JavaScript que reciba tres números digitados por el usuario, mediante prompts, y muestre en pantalla, mediante un alert, cuál es el mayor de los tres números.
+
+let numero1 = parseInt(prompt('Ingresa un número 1/3'));
+let numero2 = parseInt(prompt('Ingresa otro número 2/3'));
+let numero3 = parseInt(prompt('Ingresa un último número 3/3'));
+
+if (numero1 > numero2 && numero1 > numero3) {
+  alert('El número: ' + numero1 + ' es el mayor de los tres');
+} else if (numero2 > numero1 && numero2 > numero3) {
+  alert('El número: ' + numero2 + ' es el mayor de los tres');
+} else if (numero3 > numero1 && numero3 > numero2) {
+  alert('El número: ' + numero3 + ' es el mayor de los tres');
+} else if (numero1 === numero2 && numero2 === numero3) {
+  alert('Los tres números son iguales');
+} else {
+  alert('Debes ingresar valores numéricos');
+}
 
 // ------- RETO 5
 // Crea una aplicación web con JavaScript que reciba tres números digitados por el usuario, mediante prompts, y muestre en pantalla, mediante un alert, la suma de los tres números.
 // ¿Cómo verifico mediante condicionales que un valor existe?
+
+let num1 = parseInt(prompt('Ingresa un número 1/3'));
+let num2 = parseInt(prompt('Ingresa otro número 2/3'));
+let num3 = parseInt(prompt('Ingresa un último número 1/3'));
+
+// En este caso, el condicional funciona para validar las respuestas de los usuarios
+// Cuando una variable no existe su validación se considera "falsy", es decir, que arroja un false
+// Usando el caracter ! antes de la variable, verificamos que la variable sea diferente de true
+// Es decir si !num significa que num es false o que no existe
+
+if (!num1 || !num2 || !num3) {
+  alert('Debes ingresar valores numéricos');
+} else {
+  alert('La suma de los tres números es: ' + (num1 + num2 + num3));
+}
