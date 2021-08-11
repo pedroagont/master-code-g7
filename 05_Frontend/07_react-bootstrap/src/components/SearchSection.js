@@ -1,53 +1,45 @@
 import {
-  Button, Form,
-  FormControl, InputGroup
+  Button, Col,
+  Form, Row
 } from 'react-bootstrap';
 
 function SearchSection() {
   return (
-    <Form className="m-5 p-5 border border-primary">
-      <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon1">Nombre</InputGroup.Text>
-        <FormControl
-          placeholder="Nombre"
-          aria-label="Nombre"
-          aria-describedby="basic-addon1"
-        />
-      </InputGroup>
+    <Form className="m-5 p-3 bg-dark text-light border rounded border-primary text-center">
+      <h4 className="mb-4">Soy un form para que mis usuarios ingresen datos</h4>
 
-      <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon1">Teléfono</InputGroup.Text>
-        <FormControl
-          placeholder="Teléfono"
-          aria-label="Teléfono"
-          aria-describedby="basic-addon1"
-        />
-      </InputGroup>
-
-      <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon1">Correo</InputGroup.Text>
-        <FormControl
-          placeholder="Correo"
-          aria-label="Correo"
-          aria-describedby="basic-addon1"
-        />
-      </InputGroup>
-
-      <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon1">Dirección</InputGroup.Text>
-        <FormControl
-          placeholder="Dirección"
-          aria-label="Dirección"
-          aria-describedby="basic-addon1"
-        />
-      </InputGroup>
-
-      <InputGroup>
-        <InputGroup.Text>With textarea</InputGroup.Text>
-        <FormControl as="textarea" aria-label="With textarea" />
-      </InputGroup>
-      <Button variant="primary" type="submit" className="mt-4">
-        Submit
+      <Row>
+        <Col xs={12} sm={6} md={6} lg={3} className="my-1">
+          <Form.Group as={Col} controlId="formGridState">
+            <Form.Select defaultValue="Origen...">
+              <option disabled selected>Origen...</option>
+              <option>Ciudad de México</option>
+              <option>León</option>
+              <option>Guadalajara</option>
+              <option>Monterrey</option>
+            </Form.Select>
+          </Form.Group>
+        </Col>
+        <Col xs={12} sm={6} md={6} lg={3} className="my-1">
+          <Form.Group as={Col} controlId="formGridState">
+            <Form.Select defaultValue="Destino...">
+              <option disabled selected>Destino...</option>
+              <option>Cancún</option>
+              <option>Playa del Carmen</option>
+              <option>Tulum</option>
+              <option>Isla Mujeres</option>
+            </Form.Select>
+          </Form.Group>
+        </Col>
+        <Col xs={12} sm={6} md={6} lg={3} className="my-1">
+          <Form.Control placeholder="Fecha de salida" />
+        </Col>
+        <Col xs={12} sm={6} md={6} lg={3} className="my-1">
+          <Form.Control placeholder="Fecha de regreso" />
+        </Col>
+      </Row>
+      <Button variant="primary" type="submit" className="px-5 py-2 mt-3">
+        Buscar
       </Button>
     </Form>
   );
