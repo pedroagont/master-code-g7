@@ -6,8 +6,8 @@ import {
 function MainProducts() {
   return (
     <>
-      <Row xs={2} sm={3} md={4} className="g-4 m-5">
-        {Array.from({ length: 8 }).map((_, idx) => (
+      <Row xs={1} sm={2} md={3} className="g-4 m-5">
+        {Array.from({ length: 6 }).map((_, idx) => (
           <Col key={idx}>
             <Card>
               <Card.Img variant="top" src="https://picsum.photos/200" />
@@ -16,6 +16,9 @@ function MainProducts() {
                 <Card.Text>
                   This is a longer card with supporting text below as a natural
                   lead-in to additional content. This content is a little bit longer.
+                </Card.Text>
+                <Card.Text className="text-end h5 fw-bold text-success">
+                  $9, 990. 00 MXN
                 </Card.Text>
                 <Button variant="primary">See more!</Button>
               </Card.Body>
