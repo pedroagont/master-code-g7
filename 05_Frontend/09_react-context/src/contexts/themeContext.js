@@ -4,10 +4,10 @@ const themeContext = createContext();
 
 function ThemeProvider({ children }) {
   const [ toggle, setToggle ] = useState(false);
-  const toggleFunction = () => setToggle(!toggle);
+  const handleToggle = () => setToggle(!toggle);
 
   return (
-    <themeContext.Provider value={{ toggle, toggleFunction }}>
+    <themeContext.Provider value={{ toggle, handleToggle }}>
       {children}
     </themeContext.Provider>
   );
