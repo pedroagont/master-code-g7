@@ -8,6 +8,7 @@ body {
   padding: 0.5em;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   transition: 0.5s;
 }
 
@@ -20,9 +21,10 @@ body {
 
 .boton {
   padding: 2em;
+  margin: 0.5em 0;
   box-shadow: 1px 1px 1px black;
-  transition: 0.5s;
   border-radius: 20px;
+  transition: 0.5s;
 }
 
 .boton:hover {
@@ -37,7 +39,7 @@ body {
 .footer {
   font-weight: bold;
   text-align: center;
-  padding: 1em;
+  padding: 2em;
   transition: 0.5s;
 }
 
