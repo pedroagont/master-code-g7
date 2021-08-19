@@ -5,7 +5,7 @@ function OrderForm() {
   const handleOrderForm = () => {
     // console.log('Hola desde el callback!', formData);
     const { pedido, nombre, direccion, telefono } = formData;
-    alert(`Gracias por tu compra ${nombre}! Tu pedido de ${pedido} está en camino a ${direccion} y te avisarán al ${telefono}`);
+    alert(`Hola ${nombre}! Tu pedido de ${pedido} está en camino a ${direccion} y te avisarán al ${telefono}`);
   }
 
   const { formData, handleChange, handleSubmit } = useForm(handleOrderForm);
