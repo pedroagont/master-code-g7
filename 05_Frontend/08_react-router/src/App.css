@@ -1,0 +1,35 @@
+/* BARRA DE NAVEGACIÓN */
+.navigation-bar {
+  background-color: tomato;
+}
+
+.navigation-bar ul {
+  display: flex;
+}
+
+.navigation-bar ul li {
+  list-style: none;
+  padding: 1em;
+}
+
+.navigation-bar ul li a {
+  color: white;
+}
+
+/* SECCIONES */
+.section {
+  padding: 0.5em;
+  height: 100vh;
+}
+
+.home {
+  background-color: cornsilk;
+}
+
+.about {
+  background-color: khaki;
+}
+
+.users {
+  background-color: lightcyan;
+}
