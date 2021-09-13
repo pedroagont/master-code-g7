@@ -1,21 +1,21 @@
 import useForm from '../hooks/useForm';
 
 function OrderForm() {
+  
+  const { formData, handleChange, handleSubmit } = useForm(handleOrderForm);
 
-  const handleOrderForm = () => {
+  function handleOrderForm() {
     // console.log('Hola desde el callback!', formData);
     const { pedido, nombre, direccion, telefono } = formData;
     alert(`Hola ${nombre}! Tu pedido de ${pedido} está en camino a ${direccion} y te avisarán al ${telefono}`);
   }
-
-  const { formData, handleChange, handleSubmit } = useForm(handleOrderForm);
-
+  
   return (
     <form className="form" onSubmit={ handleSubmit }>
       <h2 className="form-title">Pide tu cupcake aquí! 🧁</h2>
 
-      <label htmlFor="pet-select" className="form-label">Sabor de tus cupcakes</label>
-      <select name="pedido" id="pet-select" className="form-input" onChange={ handleChange } value={formData.pedido || ''} required>
+      <label htmlFor="flavour-select" className="form-label">Sabor de tus cupcakes</label>
+      <select name="pedido" id="flavour-select" className="form-input" onChange={ handleChange } value={formData.pedido || ''} required>
           <option value="">Escoge una opción..</option>
           <option value="chocolate">Chocolate</option>
           <option value="vainilla">Vainilla</option>
