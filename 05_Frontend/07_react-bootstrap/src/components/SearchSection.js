@@ -12,7 +12,7 @@ function SearchSection() {
         <Col xs={12} sm={6} md={6} lg={3} className="my-1">
           <Form.Group as={Col} controlId="formGridState">
             <Form.Select defaultValue="Origen...">
-              <option disabled selected>Origen...</option>
+              <option disabled>Origen...</option>
               <option>Ciudad de México</option>
               <option>León</option>
               <option>Guadalajara</option>
@@ -23,7 +23,7 @@ function SearchSection() {
         <Col xs={12} sm={6} md={6} lg={3} className="my-1">
           <Form.Group as={Col} controlId="formGridState">
             <Form.Select defaultValue="Destino...">
-              <option disabled selected>Destino...</option>
+              <option disabled>Destino...</option>
               <option>Cancún</option>
               <option>Playa del Carmen</option>
               <option>Tulum</option>
