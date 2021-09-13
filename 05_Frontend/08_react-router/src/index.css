@@ -1,3 +1,6 @@
-body {
+/* GENERALES PARA REMOVER MARGENES POR DEFAULT */
+* {
   font-family: sans-serif;
+  margin: 0;
+  padding: 0;
 }

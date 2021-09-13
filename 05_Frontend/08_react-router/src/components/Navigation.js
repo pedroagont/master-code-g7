@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 function Navigation() {
   return (
-    <nav>
+    <nav className="navigation-bar">
       <ul>
         <li>
           <Link to="/">Home</Link>
