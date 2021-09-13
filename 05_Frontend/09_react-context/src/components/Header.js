@@ -1,16 +1,15 @@
-import { useContext } from 'react';
-
-import { themeContext } from '../contexts/themeContext';
+import { useThemeContext } from '../contexts/themeContext';
 
 function Header() {
-  const { toggle, handleToggle } = useContext(themeContext);
+  const { toggle, handleToggle } = useThemeContext();
   return (
-    <div className={ `header ${toggle ? 'dark' : 'light'}` }>
+    <div className={`header ${toggle ? 'dark' : 'light'}`}>
       <h2>Soy el header! 🎩</h2>
       <button
-        className={ `boton ${toggle ? 'dark' : 'light'}` }
-        onClick={ handleToggle }>
-        Cambiar tema: { toggle ? '🌚' : '🌞' }
+        className={`boton ${toggle ? 'dark' : 'light'}`}
+        onClick={handleToggle}
+      >
+        Cambiar tema: {toggle ? '🌚' : '🌞'}
       </button>
     </div>
   );

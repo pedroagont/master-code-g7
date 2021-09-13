@@ -1,12 +1,10 @@
-import { useContext } from 'react';
-
-import { themeContext } from '../contexts/themeContext';
+import { useThemeContext } from '../contexts/themeContext';
 
 function Footer() {
-  const { toggle } = useContext(themeContext);
+  const { toggle } = useThemeContext();
 
   return (
-    <div className={ `footer ${toggle ? 'dark' : 'light' }` }>
+    <div className={`footer ${toggle ? 'dark' : 'light'}`}>
       <small>Soy el footer! 🥾</small>
     </div>
   );

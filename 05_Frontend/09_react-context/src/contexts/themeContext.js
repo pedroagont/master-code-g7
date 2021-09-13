@@ -1,9 +1,13 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useContext } from 'react';
 
 const themeContext = createContext();
 
+function useThemeContext() {
+  return useContext(themeContext);
+}
+
 function ThemeProvider({ children }) {
-  const [ toggle, setToggle ] = useState(false);
+  const [toggle, setToggle] = useState(false);
   const handleToggle = () => setToggle(!toggle);
 
   return (
@@ -13,4 +17,4 @@ function ThemeProvider({ children }) {
   );
 }
 
-export { themeContext, ThemeProvider };
+export { useThemeContext, ThemeProvider };
