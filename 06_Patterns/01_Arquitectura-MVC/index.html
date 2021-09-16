@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Arquitectura MVC 🏗</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Arquitectura MVC 🏗</h1>
+
+    <h2>TODO List</h2>
+
+    <div id="todo-app">
+      <form onsubmit="view.addItem(event)">
+        <input type="text" id="add-item-input" autocomplete="off" />
+        <input type="submit" />
+      </form>
+      <ul id="todo-list"></ul>
+    </div>
+
+    <script src="app.js" charset="utf-8"></script>
+  </body>
+</html>

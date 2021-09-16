@@ -1,0 +1,45 @@
+body {
+  font-family: sans-serif;
+  background: #f2f3ae;
+  padding: 1em;
+}
+
+h1,
+h2 {
+  color: #f4442e;
+  text-shadow: 1px 1px 1px black;
+}
+
+#todo-app  {
+  width: 50%;
+}
+
+#todo-app input {
+  padding: 0.5em;
+  font-size: 16px;
+  border-radius: 10px;
+  display: inline;
+}
+
+#todo-app input:focus {
+  outline: none;
+  border-color: #edd382;
+}
+
+#todo-app li {
+  padding: 0.25em;
+  font-size: 1.25em;
+}
+
+#todo-app li:hover {
+  text-shadow: 0.5px 0.5px 0.5px grey;
+}
+
+#todo-app li:active {
+  transform: translateY(0.5px);
+}
+
+.completed {
+  text-decoration: line-through;
+  color: darkkhaki;
+}
