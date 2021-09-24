@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1632452306009" clover="3.2.0">
-  <project timestamp="1632452306009" name="All files">
+<coverage generated="1632453694700" clover="3.2.0">
+  <project timestamp="1632453694700" name="All files">
     <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3" elements="9" coveredelements="9" complexity="0" loc="6" ncloc="6" packages="1" files="3" classes="3"/>
     <file name="cloneArray.js" path="/Users/pedroagont/Developer/master-code-g7/06_Patterns/04_Testing/cloneArray.js">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
