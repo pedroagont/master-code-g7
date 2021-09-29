@@ -1,0 +1,16 @@
+{
+  "name": "01_nodejs-server",
+  "version": "1.0.0",
+  "description": "Servidor HTTP básico de NodeJS",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "server"
+  ],
+  "author": "Pedro A. González",
+  "license": "ISC"
+}
