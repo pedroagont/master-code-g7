@@ -27,13 +27,15 @@ console.log('Hola desde index! 👋');
 // Estos argumentos son callbacks que podemos ejecutar dentro de la promesa para darla por terminada.
 
 // Ejemplo Promesa
-const promesaRandom = new Promise((resolve, reject) => {
-  const numero = Math.ceil(Math.random() * 10);
-  setTimeout(() => numero >= 5
-    ? resolve(numero)
-    : reject(new Error(`El número ${numero} es menor que 5`))
-  , 1000)
-});
+const promesaRandom = () => {
+  return new Promise((resolve, reject) => {
+    const numero = Math.ceil(Math.random() * 10);
+    setTimeout(() => numero >= 5
+      ? resolve(numero)
+      : reject(new Error(`El número ${numero} es menor que 5`))
+    , 1000)
+  });
+}
 
 // Para ejecutar una promesa, accedemos a .then() para recibir la resolución y .catch() para recibir el rechazo
 // promesaRandom
@@ -43,7 +45,7 @@ const promesaRandom = new Promise((resolve, reject) => {
 // Otra forma para acceder a la promesa es mediante el uso de funciones con async/await
 const respuestaPromesaRandom = async () => {
   try {
-    const respuesta = await promesaRandom;
+    const respuesta = await promesaRandom();
     console.log(respuesta);
   } catch (e) {
     console.log(e);

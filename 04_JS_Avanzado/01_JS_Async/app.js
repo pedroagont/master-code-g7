@@ -41,17 +41,17 @@ console.log(3);
 
 const terceraFuncion = () => {
   setTimeout(() => console.log('Saludos desde terceraFunción 3️⃣!'), 3000);
-}
+};
 
 const segundaFuncion = () => {
   terceraFuncion();
   console.log('Saludos desde segundaFunción 2️⃣!');
-}
+};
 
 const primeraFuncion = () => {
   segundaFuncion();
   console.log('Saludos desde primeraFunción 1️⃣!');
-}
+};
 
 primeraFuncion();
 
@@ -66,33 +66,33 @@ primeraFuncion();
 const mostrarDosMensajes = (funcion1, funcion2) => {
   funcion1();
   funcion2();
-}
+};
 
 // Funciones callback
 const yoSoyElCallback1 = () => {
   console.log('Hola desde el callback 1! 👋1️⃣');
-}
+};
 
 const yoSoyElCallback2 = () => {
   console.log('Hola desde el callback 2! 👋2️⃣');
-}
+};
 
-mostrarDosMensajes(yoSoyElCallback1, yoSoyElCallback2)
+mostrarDosMensajes(yoSoyElCallback1, yoSoyElCallback2);
 console.log('Hola después de mostrar mensaje!');
 
 // Ejemplo callback saludar
 
 const saludarUsuario = (nombreUsuario, callback) => {
-  callback(nombreUsuario)
-}
+  callback(nombreUsuario);
+};
 
-const callbackBienvenida = (nombreUsuario) => {
+const callbackBienvenida = nombreUsuario => {
   console.log('Bienvenidx, ' + nombreUsuario);
-}
+};
 
-const callbackDespedida = (nombreUsuario) => {
+const callbackDespedida = nombreUsuario => {
   console.log('Adiós, ' + nombreUsuario);
-}
+};
 
 saludarUsuario('Eyra', callbackBienvenida);
 saludarUsuario('Eyra', callbackDespedida);
@@ -113,10 +113,11 @@ saludarUsuario('July', callbackDespedida);
 //1. Creamos la función de orden superior que recibe dos números y un callback:
 const resultado = (num1, num2, operacion) => {
   //Validamos que el tercer argumento "operacion" sea una función (recordando que un callback es una función como argumento dentro de otra función):
-  if (typeof operacion !== 'function') return console.log('Debes pasar una función como argumento');
+  if (typeof operacion !== 'function')
+    return console.log('Debes pasar una función como argumento');
   //Regresamos con el resultado de ejecutar el callback "operación" con los num1 y num2 como parámetros
   return operacion(num1, num2);
-}
+};
 
 //2. Creamos las funciones que pasaremos como callback (sumar, restar, multiplicar y dividir)
 //Como sólo requerimos retornar el resultado de la operación, podemos hacer uso de funciones flecha y de esa forma declararlas en una sóla línea
