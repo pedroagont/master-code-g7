@@ -55,7 +55,7 @@ app.get('/autores/:nombre/:libro', (req, res) => {
 // }
 
 // PETICIONES TIPO POST
-// ¿Cómo le pasamos datos desde un body en JSON
+// ¿Cómo le pasamos datos desde un body en JSON?
 app.post('/perfil', (req, res) => {
   console.log(req.body);
 
