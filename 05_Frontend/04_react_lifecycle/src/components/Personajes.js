@@ -3,7 +3,6 @@ import Card from './Card';
 import axios from 'axios';
 
 class Personajes extends React.Component {
-
   // 1. INICIALIZANDO EL COMPONENTE
 
   // -----> Método constructor()
@@ -22,49 +21,45 @@ class Personajes extends React.Component {
 
     // Para acceder al estado podemos acceder a la instancia this + el objeto state
     this.state = {
-      personajes: [],
-    }
-
+      personajes: []
+    };
   }
 
   // 2. PARA MONTAR EL COMPONENTE
   componentDidMount() {
     const URL_API_RICKMORTY = 'https://rickandmortyapi.com/api/character';
-    axios.get(URL_API_RICKMORTY)
+    axios
+      .get(URL_API_RICKMORTY)
       .then(response => {
         this.setState({ personajes: response.data.results });
       })
-      .catch(error => console.log(error))
+      .catch(error => console.log(error));
   }
 
-  renderizarPersonajes() {
+  render() {
     const { personajes } = this.state;
     if (personajes.length === 0) {
-      return <h2>Cargando personajes...</h2>
-    } else if (personajes.length > 0){
+      return <h2>Cargando personajes...</h2>;
+    } else if (personajes.length > 0) {
       return (
         <>
-          <h2> Se encontraron { personajes.length } personajes </h2>
+          <h2> Se encontraron {personajes.length} personajes </h2>
           <div>
-            {
-              personajes.map(personaje => {
-                return <Card key={ personaje.id } nombre={personaje.name} especie={personaje.species} origen={personaje.origin.name} imagen={personaje.image}/>
-              })
-            }
+            {personajes.map(personaje => {
+              return (
+                <Card
+                  key={personaje.id}
+                  nombre={personaje.name}
+                  especie={personaje.species}
+                  origen={personaje.origin.name}
+                  imagen={personaje.image}
+                />
+              );
+            })}
           </div>
         </>
       );
     }
-  }
-
-  render() {
-    return(
-      <>
-      {
-        this.renderizarPersonajes()
-      }
-      </>
-    );
   }
 }
 

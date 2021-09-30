@@ -22,7 +22,7 @@ function Ejemplo() {
       <p>Contador: {count}</p>
       <button onClick={ handleSuma }>Sumar</button>
 
-      <p>Nombre: {nombre}</p>
+      <p>Nombre: { nombre }</p>
       <button onClick={ handleCambioDeNombre }> Cambiar nombre </button>
     </div>
   );
