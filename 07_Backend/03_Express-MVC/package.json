@@ -1,0 +1,23 @@
+{
+  "name": "03_express-mvc",
+  "version": "1.0.0",
+  "description": "Arquitectura MVC con Express",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "mvc",
+    "expressjs"
+  ],
+  "author": "Pedro A. González",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
