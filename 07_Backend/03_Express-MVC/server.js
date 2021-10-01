@@ -10,7 +10,7 @@ const routes = require('./routes');
 app.use(express.json()); // para procesar json
 app.use(express.urlencoded({ extended: true })); // para procesar documentos, archivos, imagenes, video, etc
 app.use(morgan('dev')); // para que nos muestre un registro de cada acceso a nuestro servidor
-app.use(helmet()); // para aumentar la seguridad de nuestro servidor
+app.use(helmet()); // para aumentar la seguridad de nuestro servidor (revisar headers)
 
 // ENDPOINTS
 app.use('/api/v1', routes);
