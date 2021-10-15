@@ -1,0 +1,16 @@
+{
+  "name": "02_js_async",
+  "version": "1.0.0",
+  "description": "Intro a JS Async",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "intro",
+    "async",
+    "js"
+  ],
+  "author": "Pedro A. González",
+  "license": "ISC"
+}
