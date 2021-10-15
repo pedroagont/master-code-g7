@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express();
-const { UsersController } = require('../controller');
+const { UsersController } = require('../controllers');
 
 // CRUD USUARIOS
 // Create - POST
