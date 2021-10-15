@@ -10,26 +10,29 @@ const model = {
 const view = {
   // Método que limpia nuestra lista de elementos
   clearList: function() {
-    document.getElementById('todo-list').innerHTML = '';
+    return document.getElementById('todo-list').innerHTML = '';
   },
 
   // Método que renderiza las tareas que se encuentren en la base de datos
   render: function() {
     this.clearList();
-    if (model.todos.length != 0) {
-      for (let i = 0; i < model.todos.length; i++) {
+    const todos = controller.getItems();
+    if (todos.length != 0) {
+      let renderedHtml = '';
+      for (let i = 0; i < todos.length; i++) {
         const newListItem = `
           <li class="list-item">
-            <span class="${model.todos[i].completed && 'completed'}"
+            <span class="${todos[i].completed && 'completed'}"
               onclick="controller.completeItem(${i})">
-              ${model.todos[i].todo}
+              ${todos[i].todo}
             </span>
             <button onclick="controller.completeItem(${i})">✅</button>
             <button onclick="controller.deleteItem(${i})">❌</button>
           </li>
         `;
-        document.getElementById('todo-list').innerHTML += newListItem;
+        renderedHtml += newListItem;
       }
+      return document.getElementById('todo-list').innerHTML = renderedHtml;
     }
   },
 
@@ -40,7 +43,7 @@ const view = {
     if (addItemInput.value != '' && addItemInput.value != ' ') {
       controller.addItem(addItemInput.value);
     }
-    document.getElementById('add-item-input').value = '';
+    return document.getElementById('add-item-input').value = '';
   }
 };
 
@@ -50,26 +53,30 @@ const view = {
 const controller = {
   // Método que inicializa nuestro controlador (dispara el renderizado de la vista)
   init: function() {
-    view.render();
+    return view.render();
+  },
+
+  getItems: function() {
+    return model.todos;
   },
 
   // Método que procesa el agregar tareas a la lista (escribe en el modelo/base de datos y dispara el renderizado de la vista)
   addItem: function(item) {
     const newTodoItem = { todo: item, completed: false };
     model.todos.push(newTodoItem);
-    view.render();
+    return view.render();
   },
 
   // Método que procesa el completar tareas de la lista (escribe completed: true en el modelo/base de datos y dispara el renderizado de la vista)
   completeItem: function(itemIndex) {
     model.todos[itemIndex].completed = !model.todos[itemIndex].completed;
-    view.render();
+    return view.render();
   },
 
   // Método que procesa el remover elementos (elimina la tarea del modelo/base de datos y dispara el renderizado de la vista)
   deleteItem: function(itemIndex) {
     model.todos.splice(itemIndex, 1);
-    view.render();
+    return view.render();
   }
 };
 
