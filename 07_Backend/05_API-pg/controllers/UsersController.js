@@ -18,9 +18,10 @@ const createUser = (req, res) => {
 
   // A PARTIR DE AQUÍ VA LA CAPA QUE ACCEDE A LA BASE DE DATOS (MODELS)
   pool
-    .query(
-      `INSERT INTO users (email, password) VALUES('${email}', '${password}') RETURNING *`
-    )
+    .query('INSERT INTO users (email, password) VALUES($1, $2) RETURNING *', [
+      email,
+      password
+    ])
     .then(result => {
       return res
         .status(201)
@@ -49,7 +50,7 @@ const getUserById = (req, res) => {
 
   // A PARTIR DE AQUÍ VA LA CAPA QUE ACCEDE A LA BASE DE DATOS (MODELS)
   pool
-    .query(`SELECT * FROM users WHERE user_id = ${id}`)
+    .query('SELECT * FROM users WHERE user_id = $1', [id])
     .then(result => {
       return res.status(200).send({
         message: `Este es tu usuario con el id: ${id}!`,
@@ -67,7 +68,8 @@ const updateUser = (req, res) => {
   // A PARTIR DE AQUÍ VA LA CAPA QUE ACCEDE A LA BASE DE DATOS (MODELS)
   pool
     .query(
-      `UPDATE users SET email = '${email}', password = '${password}' WHERE user_id = ${id} RETURNING *`
+      'UPDATE users SET email = $1, password = $2 WHERE user_id = $3 RETURNING *',
+      [email, password, id]
     )
     .then(result => {
       return res.status(200).send({
@@ -103,7 +105,7 @@ const deleteUser = (req, res) => {
 
   // A PARTIR DE AQUÍ VA LA CAPA QUE ACCEDE A LA BASE DE DATOS (MODELS)
   pool
-    .query(`DELETE FROM users WHERE user_id = ${id}`)
+    .query('DELETE FROM users WHERE user_id = $1', [id])
     .then(result => {
       return res.status(204).send();
     })
