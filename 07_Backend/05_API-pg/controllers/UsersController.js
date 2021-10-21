@@ -1,6 +1,6 @@
 const { Pool } = require('pg');
 
-const pool = new Pool({
+const db = new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'postgres',
@@ -17,12 +17,12 @@ const createUser = (req, res) => {
   }
 
   // A PARTIR DE AQUÍ VA LA CAPA QUE ACCEDE A LA BASE DE DATOS (MODELS)
-  pool
-    .query('INSERT INTO users (email, password) VALUES($1, $2) RETURNING *', [
-      email,
-      password
-    ])
+  db.query('INSERT INTO users (email, password) VALUES($1, $2) RETURNING *', [
+    email,
+    password
+  ])
     .then(result => {
+      console.log(result);
       return res
         .status(201)
         .send({ message: 'Usuario creado!', user: result.rows[0] });
@@ -34,8 +34,7 @@ const getAllUsers = (req, res) => {
   // Lógica de read all
 
   // A PARTIR DE AQUÍ VA LA CAPA QUE ACCEDE A LA BASE DE DATOS (MODELS)
-  pool
-    .query('SELECT * FROM users')
+  db.query('SELECT * FROM users')
     .then(result => {
       return res
         .status(200)
@@ -49,8 +48,7 @@ const getUserById = (req, res) => {
   const { id } = req.params;
 
   // A PARTIR DE AQUÍ VA LA CAPA QUE ACCEDE A LA BASE DE DATOS (MODELS)
-  pool
-    .query('SELECT * FROM users WHERE user_id = $1', [id])
+  db.query('SELECT * FROM users WHERE user_id = $1', [id])
     .then(result => {
       return res.status(200).send({
         message: `Este es tu usuario con el id: ${id}!`,
@@ -66,11 +64,10 @@ const updateUser = (req, res) => {
   const { email, password } = req.body;
 
   // A PARTIR DE AQUÍ VA LA CAPA QUE ACCEDE A LA BASE DE DATOS (MODELS)
-  pool
-    .query(
-      'UPDATE users SET email = $1, password = $2 WHERE user_id = $3 RETURNING *',
-      [email, password, id]
-    )
+  db.query(
+    'UPDATE users SET email = $1, password = $2 WHERE user_id = $3 RETURNING *',
+    [email, password, id]
+  )
     .then(result => {
       return res.status(200).send({
         message: `Actualizado el usuario con el id: ${id}!`,
@@ -86,10 +83,9 @@ const updatePartialUser = (req, res) => {
   const { property, value } = req.body;
 
   // A PARTIR DE AQUÍ VA LA CAPA QUE ACCEDE A LA BASE DE DATOS (MODELS)
-  pool
-    .query(
-      `UPDATE users SET ${property} = '${value}' WHERE user_id = ${id} RETURNING *`
-    )
+  db.query(
+    `UPDATE users SET ${property} = '${value}' WHERE user_id = ${id} RETURNING *`
+  )
     .then(result => {
       return res.status(200).send({
         message: `Parcialmente actualizado el usuario con el id: ${id}!`,
@@ -104,8 +100,7 @@ const deleteUser = (req, res) => {
   const { id } = req.params;
 
   // A PARTIR DE AQUÍ VA LA CAPA QUE ACCEDE A LA BASE DE DATOS (MODELS)
-  pool
-    .query('DELETE FROM users WHERE user_id = $1', [id])
+  db.query('DELETE FROM users WHERE user_id = $1', [id])
     .then(result => {
       return res.status(204).send();
     })
