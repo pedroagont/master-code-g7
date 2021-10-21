@@ -1,3 +1,5 @@
+const UsersModel = require('../models/UsersModel');
+
 const { Pool } = require('pg');
 
 const db = new Pool({
@@ -8,7 +10,7 @@ const db = new Pool({
   port: 5432
 });
 
-const createUser = (req, res) => {
+const createUser = async (req, res) => {
   // Lógica de create
   const { email, password } = req.body;
 
@@ -17,16 +19,9 @@ const createUser = (req, res) => {
   }
 
   // A PARTIR DE AQUÍ VA LA CAPA QUE ACCEDE A LA BASE DE DATOS (MODELS)
-  db.query('INSERT INTO users (email, password) VALUES($1, $2) RETURNING *', [
-    email,
-    password
-  ])
-    .then(result => {
-      return res
-        .status(201)
-        .send({ message: 'Usuario creado!', user: result.rows[0] });
-    })
-    .catch(err => console.error(err.stack));
+  const user = await UsersModel.createUser(email, password, db);
+
+  return res.status(201).send({ message: 'Usuario creado!', user });
 };
 
 const getAllUsers = (req, res) => {
