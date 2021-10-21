@@ -22,7 +22,6 @@ const createUser = (req, res) => {
     password
   ])
     .then(result => {
-      console.log(result);
       return res
         .status(201)
         .send({ message: 'Usuario creado!', user: result.rows[0] });
@@ -63,6 +62,10 @@ const updateUser = (req, res) => {
   const { id } = req.params;
   const { email, password } = req.body;
 
+  if (!email || !password) {
+    return res.status(400).send({ message: 'Ingresar email y password' });
+  }
+
   // A PARTIR DE AQUÍ VA LA CAPA QUE ACCEDE A LA BASE DE DATOS (MODELS)
   db.query(
     'UPDATE users SET email = $1, password = $2 WHERE user_id = $3 RETURNING *',
@@ -81,6 +84,10 @@ const updatePartialUser = (req, res) => {
   // Lógica de partial update
   const { id } = req.params;
   const { property, value } = req.body;
+
+  if (!property || !value) {
+    return res.status(400).send({ message: 'Ingresar property y value' });
+  }
 
   // A PARTIR DE AQUÍ VA LA CAPA QUE ACCEDE A LA BASE DE DATOS (MODELS)
   db.query(
