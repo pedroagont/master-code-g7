@@ -1,12 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const { UsersController } = require('../controllers');
 
-router.get('/', (req, res) => {
-  return res.status(200).send('Hola desde el server con GET!');
-});
-
-router.post('/', (req, res) => {
-  return res.status(200).send('Hola desde el server con POST!');
-});
+router.post('/', UsersController.createUser);
+router.get('/', UsersController.getAllUsers);
 
 module.exports = router;
