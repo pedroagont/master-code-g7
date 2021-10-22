@@ -1,8 +1,16 @@
+const db = require('../db');
+
 const createUser = (req, res) => {
-  const newUserID = Math.floor(Math.random() * 1000);
-  return res
-    .status(200)
-    .send({ message: 'Hola desde el server con POST!', newUserID });
+  db('users')
+    .insert({ email: req.body.email, password: req.body.password })
+    .returning('*')
+    .then(result => {
+      const user = result[0];
+      return res
+        .status(200)
+        .send({ message: 'Hola desde el server con POST!', user });
+    })
+    .catch(err => console.error(err.stack));
 };
 
 const getAllUsers = (req, res) => {
