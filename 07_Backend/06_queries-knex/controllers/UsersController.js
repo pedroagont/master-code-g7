@@ -1,27 +1,29 @@
-const db = require('../db');
+const { UsersModel } = require('../models');
 
-const createUser = (req, res) => {
-  db('users')
-    .insert({ email: req.body.email, password: req.body.password })
-    .returning('*')
-    .then(result => {
-      return res
-        .status(200)
-        .send({ message: 'Hola desde el server con POST!', user: result[0] });
-    })
-    .catch(err => console.error(err.stack));
+const createUser = async (req, res) => {
+  try {
+    const user = await UsersModel.createUser(req.body);
+    return res
+      .status(200)
+      .send({ message: 'Hola desde el server con POST!', user });
+  } catch (e) {
+    return res
+      .status(400)
+      .send({ message: 'Error al crear usuario', error: e.stack });
+  }
 };
 
-const getAllUsers = (req, res) => {
-  // SELECT * FROM users
-  db.select('*')
-    .from('users')
-    .then(result => {
-      return res
-        .status(200)
-        .send({ message: 'Hola desde el server con GET!', users: result });
-    })
-    .catch(err => console.error(err.stack));
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await UsersModel.getAllUsers();
+    return res
+      .status(200)
+      .send({ message: 'Hola desde el server con GET!', users });
+  } catch (e) {
+    return res
+      .status(400)
+      .send({ message: 'Error al traer usuarios', error: e.stack });
+  }
 };
 
 module.exports = { createUser, getAllUsers };
