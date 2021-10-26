@@ -5,22 +5,23 @@ const createUser = (req, res) => {
     .insert({ email: req.body.email, password: req.body.password })
     .returning('*')
     .then(result => {
-      const user = result[0];
       return res
         .status(200)
-        .send({ message: 'Hola desde el server con POST!', user });
+        .send({ message: 'Hola desde el server con POST!', user: result[0] });
     })
     .catch(err => console.error(err.stack));
 };
 
 const getAllUsers = (req, res) => {
-  const users = [
-    { email: 'margarito@email.com', password: 'margarito123' },
-    { email: 'fulanito@email.com', password: 'fulanito123' }
-  ];
-  return res
-    .status(200)
-    .send({ message: 'Hola desde el server con GET!', users });
+  // SELECT * FROM users
+  db.select('*')
+    .from('users')
+    .then(result => {
+      return res
+        .status(200)
+        .send({ message: 'Hola desde el server con GET!', users: result });
+    })
+    .catch(err => console.error(err.stack));
 };
 
 module.exports = { createUser, getAllUsers };
