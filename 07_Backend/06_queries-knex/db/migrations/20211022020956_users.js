@@ -11,6 +11,10 @@ exports.up = function(knex) {
       .notNullable()
       .unique();
     table.string('password', 20).notNullable();
+    table
+      .boolean('is_active')
+      .notNullable()
+      .defaultTo(true);
   });
 };
 
