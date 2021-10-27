@@ -30,7 +30,9 @@ const getUserById = async (req, res) => {
       .status(200)
       .send({ message: 'Hola desde el server con GET!', user });
   } catch (error) {
-    return res.status(400).send({ message: 'Error al traer usuario', error });
+    return res
+      .status(404)
+      .send({ message: 'Error al traer usuario', error: error.message });
   }
 };
 
@@ -42,7 +44,9 @@ const updateUser = async (req, res) => {
       .status(200)
       .send({ message: 'Hola desde el server con POST!', user });
   } catch (error) {
-    return res.status(400).send({ message: 'Error al crear usuario', error });
+    return res
+      .status(400)
+      .send({ message: 'Error al actualizar usuario', error: error.message });
   }
 };
 
@@ -52,7 +56,9 @@ const deleteUser = async (req, res) => {
     await UsersModel.deleteUser(id);
     return res.status(204).send();
   } catch (error) {
-    return res.status(400).send({ message: 'Error al crear usuario', error });
+    return res
+      .status(404)
+      .send({ message: 'Error al eliminar usuario', error: error.message });
   }
 };
 
@@ -62,7 +68,9 @@ const destroyUser = async (req, res) => {
     await UsersModel.destroyUser(id);
     return res.status(204).send();
   } catch (error) {
-    return res.status(400).send({ message: 'Error al crear usuario', error });
+    return res
+      .status(400)
+      .send({ message: 'Error al destruir usuario', error: error.message });
   }
 };
 
