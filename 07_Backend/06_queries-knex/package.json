@@ -1,0 +1,27 @@
+{
+  "name": "06_queries-knex",
+  "version": "1.0.0",
+  "description": "Queries usando knex",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "express",
+    "postgres",
+    "knex"
+  ],
+  "author": "Pedro A. González",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "knex": "^0.95.11",
+    "morgan": "^1.10.0",
+    "pg": "^8.7.1"
+  }
+}
