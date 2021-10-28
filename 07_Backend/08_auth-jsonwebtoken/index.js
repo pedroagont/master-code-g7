@@ -12,7 +12,7 @@ const db = {
   // Simulamos una colección 'users'
   users: [
     { userID: 1, email: 'usuario1@correo.com', password: 'p4ssw0rd123' },
-    { userID: 2, email: 'usuario1@correo.com', password: 'p4ssw0rd123' }
+    { userID: 2, email: 'usuario2@correo.com', password: 'p4ssw0rd123' }
   ]
 };
 
@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
   return res.status(200).send({ message: 'Hola mundo! 👋', token, decoded });
 });
 
-// Hacer login -> GET /login
+// Hacer login -> POST /login
 app.post('/login', (req, res) => {
   // Desestructuramos email y password del body
   const { email, password } = req.body;
@@ -42,7 +42,6 @@ app.post('/login', (req, res) => {
   }
 
   // Buscamos el usuario en la base de datos con su email
-  // const user = db['users'].find(email);
   const user = db['users'].find(user => user.email === email);
 
   // Si el usuario no existe retornamos con un mensaje de error
@@ -89,10 +88,25 @@ app.post('/tweets', (req, res) => {
   // Para decodificar y validar un token usamos el método verify(token, secreto)
   const decoded = jwt.verify(token, 'shhhhhhhecretoooooo123');
 
+  // Verificamos que el token decodificado de la petición sea válido, si no lo es, retornamos con un mensaje de error
+  if (!decoded) {
+    return res
+      .status(400)
+      .send({ message: 'Debes haber iniciado sesión para crear un tweet' });
+  }
+
+  // Buscamos el usuario en la base de datos con su id
+  const user = db['users'].find(user => user.userID === decoded.userID);
+
+  // Si el usuario no existe retornamos con un mensaje de error
+  if (!user) {
+    return res.status(404).send({ message: 'El usuario no existe' });
+  }
+
   // Una vez que ya verificamos la validez del token del usuario, desestructuramos el content del body de la petición
   const { content } = req.body;
 
-  // Si content no existen, retornamos con un mensaje de error
+  // Si content no existe, retornamos con un mensaje de error
   if (!content) {
     return res.status(400).send({ message: 'Ingresar content' });
   }
