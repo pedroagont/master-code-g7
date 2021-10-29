@@ -21,6 +21,7 @@ app.use(express.json());
 
 // ENDPOINTS
 // Inicio/Home/Raíz -> GET /
+// RUTA PÚBLICA
 app.get('/', (req, res) => {
   // Para crear un token usamos el método sign(payload, secreto)
   const token = jwt.sign({ foo: 'bar' }, 'shhhhh');
@@ -67,17 +68,11 @@ app.post('/login', (req, res) => {
 });
 
 // Traer tweets -> GET /tweets
+
+// RUTA PRIVADA
+app.use(verifyToken);
+
 app.get('/tweets', (req, res) => {
-  // Ahora podemos usar la verificación con token en otros endpoints
-  const tokenValido = verifyToken(req.headers['authorization']);
-
-  // Si el token no es válido, retornamos con un mensaje de error
-  if (!tokenValido) {
-    return res
-      .status(400)
-      .send({ message: 'Token de autorización no es válido' });
-  }
-
   return res
     .status(200)
     .send({ message: 'Aquí están los tweets!', tweets: db['tweets'] });
@@ -85,16 +80,6 @@ app.get('/tweets', (req, res) => {
 
 // Crear un tweet -> POST /tweets
 app.post('/tweets', (req, res) => {
-  // Almacenamos el tokenValido de lo que retorne la ejecución de nuestra función verifyToken, pasándole el encabezado authorization
-  const tokenValido = verifyToken(req.headers['authorization']);
-
-  // Si el token no es válido, retornamos con un mensaje de error
-  if (!tokenValido) {
-    return res
-      .status(400)
-      .send({ message: 'Token de autorización no es válido' });
-  }
-
   // Una vez que ya verificamos la validez del token del usuario, desestructuramos el content del body de la petición
   const { content } = req.body;
 
@@ -107,7 +92,7 @@ app.post('/tweets', (req, res) => {
   const tweet = {
     tweetID: Math.floor(Math.random() * 1000), // id del tweet
     content: content, // nombre del tweet
-    userID: tokenValido.userID, // el id del usuario que creó el tweet
+    userID: req.token.userID, // el id del usuario que creó el tweet
     createdAt: new Date() // la fecha de creación del tweet
   };
 
@@ -119,10 +104,10 @@ app.post('/tweets', (req, res) => {
     .send({ message: 'Tweet creado satisfactoriamente!', tweet });
 });
 
-function verifyToken(authHeader) {
+function verifyToken(req, res, next) {
   // Si el encabezado de autorización no existe, entonces retornamos con un mensaje de error
-  if (!authHeader) {
-    return null;
+  if (!req.headers['authorization']) {
+    return res.status(400).send({ message: 'Debes iniciar sesión' });
   }
 
   // Para extraer el token, se debe acceder al encabezado 'Authorization' (en minúsculas)
@@ -133,26 +118,24 @@ function verifyToken(authHeader) {
 
   // Tomamos el segundo elemento del arreglo de palabras (posición 1)
   // ----------> token.split(' ')[1] = "ELTOKEN"
-  const token = authHeader.split(' ')[1];
+  const token = req.headers['authorization'].split(' ')[1];
 
   if (!token) {
-    return null;
+    return res.status(400).send({ message: 'Token de autorización no existe' });
   }
 
-  // Creamos un objeto tokenValido en donde almacenaremos el token decodificado
-  let tokenValido = {};
   // Para decodificar y validar un token usamos el método verify(token, secreto)
   jwt.verify(token, 'shhhhhhhecretoooooo123', (err, decoded) => {
     // Si existe algún error durante la verificación del token, retornamos con un mensaje de error
     if (err) {
-      tokenValido = null;
+      return res
+        .status(400)
+        .send({ message: 'Token de autorización inválido' });
     }
-    // En caso que la decodificación del token sea válida, asignamos ese valor al objeto tokenValido
-    tokenValido = decoded;
+    // En caso que la decodificación del token sea válida, asignamos ese valor al objeto req.token
+    req.token = decoded;
+    next();
   });
-
-  // Una vez que contamos con el objeto tokenValido adecuado, lo retornamos para que se tenga acceso en donde se requiera
-  return tokenValido;
 }
 
 // LISTEN
