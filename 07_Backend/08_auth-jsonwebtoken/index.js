@@ -1,7 +1,11 @@
+require('dotenv').config(); // Para cargar variables de entorno
+
 // MODULES
 const express = require('express');
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
+const SECRET = process.env.SECRET;
+console.log(SECRET, PORT);
 const jwt = require('jsonwebtoken');
 
 // SIMULAMOS UNA BASE DE DATOS
@@ -24,10 +28,10 @@ app.use(express.json());
 // RUTA PÚBLICA
 app.get('/', (req, res) => {
   // Para crear un token usamos el método sign(payload, secreto)
-  const token = jwt.sign({ foo: 'bar' }, 'shhhhh');
+  const token = jwt.sign({ foo: 'bar' }, SECRET);
 
   // Para decodificar un token y verificar su validez, usamos el método verify(token, secreto)
-  const decoded = jwt.verify(token, 'shhhhh');
+  const decoded = jwt.verify(token, SECRET);
 
   return res.status(200).send({ message: 'Hola mundo! 👋', token, decoded });
 });
@@ -62,7 +66,7 @@ app.post('/login', (req, res) => {
   };
 
   // Generamos un token con el payload y nuestro secreto
-  const token = jwt.sign(payload, 'shhhhhhhecretoooooo123');
+  const token = jwt.sign(payload, SECRET);
 
   return res.status(200).send({ message: 'Bienvenido!', token });
 });
@@ -125,7 +129,7 @@ function verifyToken(req, res, next) {
   }
 
   // Para decodificar y validar un token usamos el método verify(token, secreto)
-  jwt.verify(token, 'shhhhhhhecretoooooo123', (err, decoded) => {
+  jwt.verify(token, SECRET, (err, decoded) => {
     // Si existe algún error durante la verificación del token, retornamos con un mensaje de error
     if (err) {
       return res
