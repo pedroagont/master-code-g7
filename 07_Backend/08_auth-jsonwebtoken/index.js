@@ -93,26 +93,22 @@ app.post('/tweets', (req, res) => {
   const token = req.headers['authorization'].split(' ')[1];
 
   if (!token) {
-    return res.status(400).send({ message: 'Token de autorización inválido' });
+    return res.status(400).send({ message: 'Token de autorización no existe' });
   }
 
+  // Creamos un objeto tokenValido en donde almacenaremos el token decodificado
+  let tokenValido = {};
   // Para decodificar y validar un token usamos el método verify(token, secreto)
-  const decoded = jwt.verify(token, 'shhhhhhhecretoooooo123');
-
-  // Verificamos que el token decodificado de la petición sea válido, si no lo es, retornamos con un mensaje de error
-  if (!decoded) {
-    return res
-      .status(400)
-      .send({ message: 'Debes haber iniciado sesión para crear un tweet' });
-  }
-
-  // Buscamos el usuario en la base de datos con su id
-  const user = db['users'].find(user => user.userID === decoded.userID);
-
-  // Si el usuario no existe retornamos con un mensaje de error
-  if (!user) {
-    return res.status(404).send({ message: 'El usuario no existe' });
-  }
+  jwt.verify(token, 'shhhhhhhecretoooooo123', (err, decoded) => {
+    // Si existe algún error durante la verificación del token, retornamos con un mensaje de error
+    if (err) {
+      return res
+        .status(400)
+        .send({ message: 'Token de autorización no es válido' });
+    }
+    // En caso que la decodificación del token sea válida, asignamos ese valor al objeto tokenValido
+    tokenValido = decoded;
+  });
 
   // Una vez que ya verificamos la validez del token del usuario, desestructuramos el content del body de la petición
   const { content } = req.body;
@@ -126,7 +122,7 @@ app.post('/tweets', (req, res) => {
   const tweet = {
     tweetID: Math.floor(Math.random() * 1000), // id del tweet
     content: content, // nombre del tweet
-    userID: decoded.userID, // el id del usuario que creó el tweet
+    userID: tokenValido.userID, // el id del usuario que creó el tweet
     createdAt: new Date() // la fecha de creación del tweet
   };
 
