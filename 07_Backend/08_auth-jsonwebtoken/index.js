@@ -75,6 +75,13 @@ app.get('/tweets', (req, res) => {
 
 // Crear un tweet -> POST /tweets
 app.post('/tweets', (req, res) => {
+  // Si el encabezado de autorización no existe, entonces retornamos con un mensaje de error
+  if (!req.headers['authorization']) {
+    return res
+      .status(400)
+      .send({ message: 'Debes iniciar sesión para crear un tweet' });
+  }
+
   // Para extraer el token, se debe acceder al encabezado 'Authorization' (en minúsculas)
   // ----------> req.headers['authorization'] = 'Bearer ELTOKEN'
 
@@ -84,6 +91,10 @@ app.post('/tweets', (req, res) => {
   // Tomamos el segundo elemento del arreglo de palabras (posición 1)
   // ----------> token.split(' ')[1] = "ELTOKEN"
   const token = req.headers['authorization'].split(' ')[1];
+
+  if (!token) {
+    return res.status(400).send({ message: 'Token de autorización inválido' });
+  }
 
   // Para decodificar y validar un token usamos el método verify(token, secreto)
   const decoded = jwt.verify(token, 'shhhhhhhecretoooooo123');
