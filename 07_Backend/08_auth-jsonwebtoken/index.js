@@ -68,6 +68,16 @@ app.post('/login', (req, res) => {
 
 // Traer tweets -> GET /tweets
 app.get('/tweets', (req, res) => {
+  // Ahora podemos usar la verificación con token en otros endpoints
+  const tokenValido = verifyToken(req.headers['authorization']);
+
+  // Si el token no es válido, retornamos con un mensaje de error
+  if (!tokenValido) {
+    return res
+      .status(400)
+      .send({ message: 'Token de autorización no es válido' });
+  }
+
   return res
     .status(200)
     .send({ message: 'Aquí están los tweets!', tweets: db['tweets'] });
@@ -75,40 +85,15 @@ app.get('/tweets', (req, res) => {
 
 // Crear un tweet -> POST /tweets
 app.post('/tweets', (req, res) => {
-  // Si el encabezado de autorización no existe, entonces retornamos con un mensaje de error
-  if (!req.headers['authorization']) {
+  // Almacenamos el tokenValido de lo que retorne la ejecución de nuestra función verifyToken, pasándole el encabezado authorization
+  const tokenValido = verifyToken(req.headers['authorization']);
+
+  // Si el token no es válido, retornamos con un mensaje de error
+  if (!tokenValido) {
     return res
       .status(400)
-      .send({ message: 'Debes iniciar sesión para crear un tweet' });
+      .send({ message: 'Token de autorización no es válido' });
   }
-
-  // Para extraer el token, se debe acceder al encabezado 'Authorization' (en minúsculas)
-  // ----------> req.headers['authorization'] = 'Bearer ELTOKEN'
-
-  // Separamos los elementos del encabezado 'Bearer' y 'ELTOKEN' por medio del espacio ' '
-  // ----------> token.split(' ') = ["Bearer", "ELTOKEN"]
-
-  // Tomamos el segundo elemento del arreglo de palabras (posición 1)
-  // ----------> token.split(' ')[1] = "ELTOKEN"
-  const token = req.headers['authorization'].split(' ')[1];
-
-  if (!token) {
-    return res.status(400).send({ message: 'Token de autorización no existe' });
-  }
-
-  // Creamos un objeto tokenValido en donde almacenaremos el token decodificado
-  let tokenValido = {};
-  // Para decodificar y validar un token usamos el método verify(token, secreto)
-  jwt.verify(token, 'shhhhhhhecretoooooo123', (err, decoded) => {
-    // Si existe algún error durante la verificación del token, retornamos con un mensaje de error
-    if (err) {
-      return res
-        .status(400)
-        .send({ message: 'Token de autorización no es válido' });
-    }
-    // En caso que la decodificación del token sea válida, asignamos ese valor al objeto tokenValido
-    tokenValido = decoded;
-  });
 
   // Una vez que ya verificamos la validez del token del usuario, desestructuramos el content del body de la petición
   const { content } = req.body;
@@ -133,6 +118,42 @@ app.post('/tweets', (req, res) => {
     .status(200)
     .send({ message: 'Tweet creado satisfactoriamente!', tweet });
 });
+
+function verifyToken(authHeader) {
+  // Si el encabezado de autorización no existe, entonces retornamos con un mensaje de error
+  if (!authHeader) {
+    return null;
+  }
+
+  // Para extraer el token, se debe acceder al encabezado 'Authorization' (en minúsculas)
+  // ----------> req.headers['authorization'] = 'Bearer ELTOKEN'
+
+  // Separamos los elementos del encabezado 'Bearer' y 'ELTOKEN' por medio del espacio ' '
+  // ----------> token.split(' ') = ["Bearer", "ELTOKEN"]
+
+  // Tomamos el segundo elemento del arreglo de palabras (posición 1)
+  // ----------> token.split(' ')[1] = "ELTOKEN"
+  const token = authHeader.split(' ')[1];
+
+  if (!token) {
+    return null;
+  }
+
+  // Creamos un objeto tokenValido en donde almacenaremos el token decodificado
+  let tokenValido = {};
+  // Para decodificar y validar un token usamos el método verify(token, secreto)
+  jwt.verify(token, 'shhhhhhhecretoooooo123', (err, decoded) => {
+    // Si existe algún error durante la verificación del token, retornamos con un mensaje de error
+    if (err) {
+      tokenValido = null;
+    }
+    // En caso que la decodificación del token sea válida, asignamos ese valor al objeto tokenValido
+    tokenValido = decoded;
+  });
+
+  // Una vez que contamos con el objeto tokenValido adecuado, lo retornamos para que se tenga acceso en donde se requiera
+  return tokenValido;
+}
 
 // LISTEN
 app.listen(PORT, () => console.log('Servidor corriendo 😎'));
