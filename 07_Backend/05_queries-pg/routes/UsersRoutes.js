@@ -14,8 +14,11 @@ router.get('/users/:id', UsersController.getUserById);
 router.put('/users/:id', UsersController.updateUser);
 router.patch('/users/:id', UsersController.updatePartialUser);
 
-// Delete - DELETE
+// Delete (borrado lógico) - DELETE
 router.delete('/users/:id', UsersController.deleteUser);
+
+// Destroy (borrado físico) - DELETE
+router.delete('/users/:id/destroy', UsersController.destroyUser);
 
 // Login - POST
 router.post('/users/login', UsersController.loginUser);

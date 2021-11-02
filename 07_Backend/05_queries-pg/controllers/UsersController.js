@@ -44,7 +44,11 @@ const updateUser = async (req, res) => {
     return res.status(400).send({ message: 'Ingresar email y password' });
   }
 
-  const user = await UsersModel.updateUser(email, password, id);
+  // HASHEO
+  const hashedPassword = bcrypt.hashSync(password, 10);
+
+  // INTERACCIÓN CON MODELO
+  const user = await UsersModel.updateUser(email, hashedPassword, id);
 
   return res.status(200).send({
     message: `Actualizado el usuario con el id: ${id}!`,
@@ -60,6 +64,23 @@ const updatePartialUser = async (req, res) => {
     return res.status(400).send({ message: 'Ingresar property y value' });
   }
 
+  if (property === 'password') {
+    // HASHEO
+    const hashedPassword = bcrypt.hashSync(value, 10);
+
+    // INTERACCIÓN CON MODELO
+    const user = await UsersModel.updatePartialUser(
+      property,
+      hashedPassword,
+      id
+    );
+
+    return res.status(200).send({
+      message: `Parcialmente actualizado el usuario con el id: ${id}!`,
+      user
+    });
+  }
+
   const user = await UsersModel.updatePartialUser(property, value, id);
 
   return res.status(200).send({
@@ -72,6 +93,14 @@ const deleteUser = async (req, res) => {
   const { id } = req.params;
 
   await UsersModel.deleteUser(id);
+
+  return res.status(204).send();
+};
+
+const destroyUser = async (req, res) => {
+  const { id } = req.params;
+
+  await UsersModel.destroyUser(id);
 
   return res.status(204).send();
 };
@@ -92,7 +121,6 @@ const loginUser = async (req, res) => {
   }
 
   const validPassword = bcrypt.compareSync(password, user.password);
-  console.log(validPassword);
 
   if (!validPassword) {
     return res.status(400).send({ message: 'Password incorrecto' });
@@ -109,5 +137,6 @@ module.exports = {
   updateUser,
   updatePartialUser,
   deleteUser,
+  destroyUser,
   loginUser
 };
