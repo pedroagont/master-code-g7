@@ -56,11 +56,19 @@ const deleteUser = id => {
     .catch(err => console.error(err.stack));
 };
 
+const getUserByEmail = email => {
+  return db
+    .query('SELECT * FROM users WHERE email = $1', [email])
+    .then(result => result.rows[0])
+    .catch(err => console.error(err.stack));
+};
+
 module.exports = {
   createUser,
   getAllUsers,
   getUserById,
   updateUser,
   updatePartialUser,
-  deleteUser
+  deleteUser,
+  getUserByEmail
 };

@@ -1,3 +1,5 @@
+const bcrypt = require('bcryptjs');
+
 const UsersModel = require('../models/UsersModel');
 
 const createUser = async (req, res) => {
@@ -8,8 +10,11 @@ const createUser = async (req, res) => {
     return res.status(400).send({ message: 'Ingresar email y password' });
   }
 
+  // HASHEO
+  const hashedPassword = bcrypt.hashSync(password, 10);
+
   // INTERACCIÓN CON MODELO
-  const user = await UsersModel.createUser(email, password);
+  const user = await UsersModel.createUser(email, hashedPassword);
 
   // RESPUESTA A LA VISTA
   return res.status(201).send({ message: 'Usuario creado!', user });
@@ -71,11 +76,38 @@ const deleteUser = async (req, res) => {
   return res.status(204).send();
 };
 
+const loginUser = async (req, res) => {
+  // TRABAJO DEL CONTROLADOR
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).send({ message: 'Ingresar email y password' });
+  }
+
+  // INTERACCIÓN CON MODELO
+  const user = await UsersModel.getUserByEmail(email);
+
+  if (!user) {
+    return res.status(400).send({ message: 'Usuario con ese email no existe' });
+  }
+
+  const validPassword = bcrypt.compareSync(password, user.password);
+  console.log(validPassword);
+
+  if (!validPassword) {
+    return res.status(400).send({ message: 'Password incorrecto' });
+  }
+
+  // RESPUESTA A LA VISTA
+  return res.status(201).send({ message: 'Bienvenido!', user });
+};
+
 module.exports = {
   createUser,
   getAllUsers,
   getUserById,
   updateUser,
   updatePartialUser,
-  deleteUser
+  deleteUser,
+  loginUser
 };
