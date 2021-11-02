@@ -4,7 +4,7 @@ const { UsersController } = require('../controllers');
 
 // CRUD USUARIOS
 // Create - POST
-router.post('/users', UsersController.createUser);
+router.post('/users/signup', UsersController.createUser);
 
 // Read - GET
 router.get('/users', UsersController.getAllUsers);
@@ -14,7 +14,13 @@ router.get('/users/:id', UsersController.getUserById);
 router.put('/users/:id', UsersController.updateUser);
 router.patch('/users/:id', UsersController.updatePartialUser);
 
-// Delete - DELETE
+// Delete (borrado lógico) - DELETE
 router.delete('/users/:id', UsersController.deleteUser);
+
+// Destroy (borrado físico) - DELETE
+router.delete('/users/:id/destroy', UsersController.destroyUser);
+
+// Login - POST
+router.post('/users/login', UsersController.loginUser);
 
 module.exports = router;

@@ -1,12 +1,4 @@
-const { Pool } = require('pg');
-
-const db = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'postgres',
-  password: 'qwe123',
-  port: 5432
-});
+const db = require('../db');
 
 const createUser = (email, password) => {
   return db
@@ -20,14 +12,14 @@ const createUser = (email, password) => {
 
 const getAllUsers = () => {
   return db
-    .query('SELECT * FROM users')
+    .query('SELECT * FROM users WHERE is_active = true')
     .then(result => result.rows)
     .catch(err => console.error(err.stack));
 };
 
 const getUserById = id => {
   return db
-    .query('SELECT * FROM users WHERE user_id = $1', [id])
+    .query('SELECT * FROM users WHERE id = $1 AND is_active = true', [id])
     .then(result => result.rows[0])
     .catch(err => console.error(err.stack));
 };
@@ -35,7 +27,7 @@ const getUserById = id => {
 const updateUser = (email, password, id) => {
   return db
     .query(
-      'UPDATE users SET email = $1, password = $2 WHERE user_id = $3 RETURNING *',
+      'UPDATE users SET email = $1, password = $2 WHERE id = $3 RETURNING *',
       [email, password, id]
     )
     .then(result => result.rows[0])
@@ -44,15 +36,31 @@ const updateUser = (email, password, id) => {
 
 const updatePartialUser = (property, value, id) => {
   return db
-    .query(`UPDATE users SET ${property} = '${value}' WHERE user_id = ${id}`)
-    .then(result => result.rows)
+    .query(
+      `UPDATE users SET ${property} = '${value}' WHERE id = ${id} RETURNING *`
+    )
+    .then(result => result.rows[0])
     .catch(err => console.error(err.stack));
 };
 
 const deleteUser = id => {
   return db
-    .query('DELETE FROM users WHERE user_id = $1', [id])
+    .query('UPDATE users SET is_active = false WHERE id = $1', [id])
     .then(result => result.rows)
+    .catch(err => console.error(err.stack));
+};
+
+const destroyUser = id => {
+  return db
+    .query('DELETE FROM users WHERE id = $1', [id])
+    .then(result => result.rows)
+    .catch(err => console.error(err.stack));
+};
+
+const getUserByEmail = email => {
+  return db
+    .query('SELECT * FROM users WHERE email = $1', [email])
+    .then(result => result.rows[0])
     .catch(err => console.error(err.stack));
 };
 
@@ -62,5 +70,7 @@ module.exports = {
   getUserById,
   updateUser,
   updatePartialUser,
-  deleteUser
+  deleteUser,
+  destroyUser,
+  getUserByEmail
 };
