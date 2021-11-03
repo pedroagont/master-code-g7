@@ -59,7 +59,7 @@ const destroyUser = id => {
 
 const getUserByEmail = email => {
   return db
-    .query('SELECT * FROM users WHERE email = $1', [email])
+    .query('SELECT * FROM users WHERE email = $1 AND is_active = true', [email])
     .then(result => result.rows[0])
     .catch(err => console.error(err.stack));
 };
