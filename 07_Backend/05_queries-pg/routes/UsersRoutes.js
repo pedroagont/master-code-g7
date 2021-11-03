@@ -1,10 +1,20 @@
 const express = require('express');
 const router = express();
 const { UsersController } = require('../controllers');
+const { celebrate, Joi, Segments } = require('celebrate');
 
 // CRUD USUARIOS
 // Create - POST
-router.post('/users/signup', UsersController.createUser);
+router.post(
+  '/users/signup',
+  celebrate({
+    [Segments.BODY]: Joi.object().keys({
+      email: Joi.string().required(),
+      password: Joi.string().required()
+    })
+  }),
+  UsersController.createUser
+);
 
 // Read - GET
 router.get('/users', UsersController.getAllUsers);
