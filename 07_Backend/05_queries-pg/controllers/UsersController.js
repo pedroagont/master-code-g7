@@ -10,7 +10,7 @@ const createUser = async (req, res) => {
     return res.status(400).send({ message: 'Ingresar email y password' });
   }
 
-  // HASHEO
+  // HASHEO: https://www.npmjs.com/package/bcryptjs#usage---sync
   const hashedPassword = bcrypt.hashSync(password, 10);
 
   // INTERACCIÓN CON MODELO
