@@ -1,0 +1,27 @@
+{
+  "name": "09_templates-ejs",
+  "version": "1.0.0",
+  "description": "Intro a templates ejs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "templates",
+    "ejs"
+  ],
+  "author": "Pedro A. González",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  },
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "morgan": "^1.10.0"
+  }
+}

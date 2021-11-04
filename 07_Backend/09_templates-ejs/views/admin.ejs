@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mis libros</title>
+</head>
+<body>
+  <%- include('partials/_header'); %>
+  
+  <% if(rol !== 'admin'){ %>
+    <h1>No puedes ver esta página porque no eres administrador 🛑</h1>
+  <% } else { %>
+  <h1>Bienvenido administrador! 🟢</h1>
+  <% }; %>
+  
+  <%- include('partials/_footer'); %>
+  
+</body>
+</html>

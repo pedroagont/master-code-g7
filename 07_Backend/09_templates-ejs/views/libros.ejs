@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mis libros</title>
+</head>
+<body>
+
+  <%- include('partials/_header'); %>
+
+  <h1>Estos son tus libros <%= usuario %> ! 📚</h1>
+  
+  <ul>
+    <% libros.forEach(libro => { %>
+      <li>
+        <p>Titulo: <%= libro.titulo %></p>
+        <p>Autor: <%= libro.autor %></p>
+      </li>
+    <% }); %>
+  </ul>
+  
+  <%- include('partials/_footer'); %>
+
+</body>
+</html>

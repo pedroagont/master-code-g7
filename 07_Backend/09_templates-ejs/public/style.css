@@ -1,0 +1,10 @@
+body {
+  font-family: sans-serif;
+  background: tomato;
+  color: white;
+}
+
+h1,
+h2 {
+  font-style: italic;
+}
