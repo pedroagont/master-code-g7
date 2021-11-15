@@ -2,7 +2,7 @@ exports.up = function(knex) {
   // CREAR TABLA
   return knex.schema.createTable('users', function(table) {
     table
-      .increments('user_id')
+      .increments('userID')
       .notNullable()
       .unique()
       .primary();
@@ -12,7 +12,7 @@ exports.up = function(knex) {
       .unique();
     table.string('password', 20).notNullable();
     table
-      .boolean('is_active')
+      .boolean('isActive')
       .notNullable()
       .defaultTo(true);
   });

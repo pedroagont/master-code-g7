@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 const app = express();
 const routes = require('./routes');
+const { errors } = require('celebrate');
 
 // MIDDLEWARES
 app.use(express.json());
@@ -13,5 +14,6 @@ app.use(helmet());
 
 // ENDPOINTS
 app.use('/api/v1', routes);
+app.use(errors());
 
 module.exports = app;

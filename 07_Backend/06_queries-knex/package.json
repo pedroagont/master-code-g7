@@ -18,6 +18,7 @@
     "nodemon": "^2.0.14"
   },
   "dependencies": {
+    "celebrate": "^15.0.0",
     "express": "^4.17.1",
     "helmet": "^4.6.0",
     "knex": "^0.95.11",
