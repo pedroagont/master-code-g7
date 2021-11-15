@@ -1,0 +1,22 @@
+# Reto: Consultas SQL
+
+- Select the film_id and title columns from the film table.
+- Select 5 rows from the film table, getting all of the columns.
+- Select rows from the film table where the film_id is less than 4.
+- Select rows from the film table where the rating is PG or G.
+- Select rows from the actor table where the first name is Angela, Angelina, or Audrey using IN.
+- Get a list of actors with the first name Julia.
+- Get a list of actors with the first name Chris, Cameron, or Cuba.
+- Select the row from customer for customer named Jamie Rice.
+- Select amount and payment_date from payment where the amount paid was less than \$1.
+- What are the different rental durations that the store allows?
+- Order the rows in city by country_id and then by city.
+- What are the IDs of the last 3 customers to return a rental?
+- How many films are rated NC-17? How many are rated PG or PG-13?
+- How many different customers have entries in the rental table?
+- Are there any customers with the same last name?
+- Which film (id) has the most actors?
+- Which actor (id) is in the most films?
+- Count the number of cities for each country id in the city table. Order the results by count(\*).
+- What is the average rental rate of films? Can you round the result to 2 decimal places?
+- Select the 10 actors who have the longest names (first and last name combined).

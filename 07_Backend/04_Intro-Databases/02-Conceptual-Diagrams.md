@@ -17,3 +17,9 @@
 - **Llaves primarias:** Identifican de forma única a cada registro de una tabla o entidad fuerte. Se representa subrayando el nombre de la llave primaria.
 
 - **Llaves foráneas:** Identifican de forma única a cada registro de una entidad que esta relacionada con otra entidad. Se representa subrayando el nombre de la llave foránea, pero punteada.
+
+### Herramientas para diseño SQL
+
+- Diseño y referencias de modelos SQL: [https://drawsql.app](https://drawsql.app)
+- Diseño de modelos SQL: [https://app.diagrams.net](https://app.diagrams.net)
+- Visualizar JOINS: [https://joins.spathon.com](https://app.diagrams.net)
