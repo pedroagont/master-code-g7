@@ -3,6 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const app = express();
+const routes = require('./routes');
 const { errors } = require('celebrate');
 
 // MIDDLEWARES
@@ -12,7 +13,7 @@ app.use(morgan('dev')); // para que nos muestre un registro de cada acceso a nue
 app.use(helmet()); // para aumentar la seguridad de nuestro servidor (revisar headers)
 
 // ENDPOINTS
-app.use('/api/v1', require('./routes'));
+app.use('/api/v1', routes);
 app.use(errors());
 
 module.exports = app;

@@ -3,7 +3,7 @@
 // Referencia RegEx: https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
 const { celebrate, Joi, Segments } = require('celebrate');
 
-const createUser = celebrate({
+const UsersValidator = celebrate({
   [Segments.BODY]: Joi.object().keys({
     email: Joi.string()
       .email()
@@ -14,4 +14,4 @@ const createUser = celebrate({
   })
 });
 
-module.exports = { createUser };
+module.exports = UsersValidator;
