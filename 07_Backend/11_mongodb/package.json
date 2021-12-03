@@ -1,0 +1,22 @@
+{
+  "name": "11_mongodb",
+  "version": "1.0.0",
+  "description": "Aprendiendo a usar mongoDB y mongoose",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "nosql",
+    "mongodb"
+  ],
+  "author": "Pedro A. González",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^6.0.14"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
