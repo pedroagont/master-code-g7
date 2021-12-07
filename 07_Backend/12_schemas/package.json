@@ -1,0 +1,23 @@
+{
+  "name": "12_schemas",
+  "version": "1.0.0",
+  "description": "Aprendiendo a implementar schemas con mongodb en NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "schemas",
+    "mongodb",
+    "nodejs"
+  ],
+  "author": "Pedro A. González",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^6.0.15"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
