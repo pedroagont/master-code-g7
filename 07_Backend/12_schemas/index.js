@@ -1,38 +1,110 @@
+// REQUIREMENTS
+const express = require('express');
+const morgan = require('morgan');
+const helmet = require('helmet');
 const mongoose = require('mongoose');
+const app = express();
+const PORT = 3000;
+const { PostsModel } = require('./models');
 
-const db = require('./db');
-const { BlogModel } = require('./models');
+// SERVER SETTINGS / MIDDLEWARES
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(morgan('dev'));
+app.use(helmet());
 
-// CREATE
-BlogModel.create({
-  title: 'Un día increíble para aprender Schemas',
-  author: 'Pedro A. González',
-  body:
-    'Hoy me la pasé increíble en la clase del master g7 ya que estoy feliz de aprender schema'
-})
-  .then(newPost => console.log('Post publicado!', newPost))
-  .catch(error => console.log(error));
+// ROUTES
+app.get('/', (req, res) => {
+  res.send('hello!');
+});
 
-// GET ALL
-BlogModel.find()
-  .then(posts => console.log('MIS POSTS', posts))
-  .catch(error => console.log(error));
+// Create - POST
+app.post('/api/v1/posts', (req, res) => {
+  const { body } = req;
 
-// GET ONE
-BlogModel.findById('61aec6c7279483496602e4e2')
-  .then(postEncontrado => console.log('POST ENCONTRADO', postEncontrado))
-  .catch(error => console.log(error));
+  const validBody = body.title && body.author && body.content && body.category;
+  if (!validBody) {
+    return res.status(400).send({
+      message: 'Debes agregar un body con title, author, content y category'
+    });
+  }
 
-// UPDATE
-BlogModel.findByIdAndUpdate(
-  '61aec6c7279483496602e4e2',
-  { title: 'OTRO día increíble para aprender Schemas' },
-  { new: true }
-)
-  .then(updatePost => console.log('POST ACTUALIZADO', updatePost))
-  .catch(error => console.log(error));
+  PostsModel.create(body)
+    .then(newPost =>
+      res.status(201).send({ message: 'Post publicado!', post: newPost })
+    )
+    .catch(error =>
+      res
+        .status(400)
+        .send({ message: 'Error al crear post', error: error.message })
+    );
+});
 
-// DELETE
-BlogModel.findByIdAndDelete('61a98a48df12e8684ee55e27')
-  .then(() => console.log('POST BORRADO'))
-  .catch(error => console.log(error));
+// Read All - GET
+app.get('/api/v1/posts', (req, res) => {
+  PostsModel.find({ isActive: true })
+    .then(posts => res.status(201).send({ message: 'Aquí los posts!', posts }))
+    .catch(error =>
+      res
+        .status(400)
+        .send({ message: 'Error al traer posts', error: error.message })
+    );
+});
+
+// Read One - GET
+app.get('/api/v1/posts/:id', (req, res) => {
+  const { id } = req.params;
+
+  PostsModel.findById(id)
+    .then(post => res.status(201).send({ message: 'Aquí el post!', post }))
+    .catch(error =>
+      res
+        .status(400)
+        .send({ message: 'Error al traer post', error: error.message })
+    );
+});
+
+// Update - PUT
+app.put('/api/v1/posts/:id', (req, res) => {
+  const { body } = req;
+  const { id } = req.params;
+
+  PostsModel.findByIdAndUpdate(id, body, { new: true })
+    .then(post =>
+      res.status(201).send({ message: 'Aquí el post actualizado!', post })
+    )
+    .catch(error =>
+      res
+        .status(400)
+        .send({ message: 'Error al actualizar post', error: error.message })
+    );
+});
+
+// Delete - DELETE (borrado lógico)
+app.delete('/api/v1/posts/:id', (req, res) => {
+  const { id } = req.params;
+
+  PostsModel.findByIdAndUpdate(id, { isActive: false })
+    .then(() => res.status(204).send())
+    .catch(error =>
+      res
+        .status(400)
+        .send({ message: 'Error al eliminar post', error: error.message })
+    );
+});
+
+// Destroy - DELETE (borrado físico)
+app.delete('/api/v1/posts/:id/destroy', (req, res) => {
+  const { id } = req.params;
+
+  PostsModel.findByIdAndDelete(id)
+    .then(() => res.status(204).send())
+    .catch(error =>
+      res
+        .status(400)
+        .send({ message: 'Error al eliminar post', error: error.message })
+    );
+});
+
+// LISTENER
+app.listen(PORT, () => console.log('App running on http://localhost:' + PORT));

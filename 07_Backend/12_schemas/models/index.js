@@ -1,3 +1,3 @@
-const BlogModel = require('./BlogModel');
+const PostsModel = require('./PostsModel');
 
-module.exports = { BlogModel };
+module.exports = { PostsModel };
